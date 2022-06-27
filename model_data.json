@@ -10,7 +10,7 @@
 		"privacy": "",
 		"admission": "£2",
 		"duration": "",
-		"attendees": "12",
+		"attendees": "12"
 	},
 	{
 		"_id": "2",
@@ -23,7 +23,7 @@
 		"privacy": "",
 		"admission": "Free",
 		"duration": "",
-		"attendees": "10",
+		"attendees": "10"
 	},
 	{
 		"_id": "3",
@@ -36,7 +36,7 @@
 		"privacy": "",
 		"admission": "£15",
 		"duration": "",
-		"attendees": "20",
+		"attendees": "20"
 	},
 	{
 		"_id": "4",
@@ -49,7 +49,7 @@
 		"privacy": "",
 		"admission": "£2",
 		"duration": "",
-		"attendees": "12",
+		"attendees": "12"
 	},
 	{
 		"_id": "5",
@@ -62,7 +62,7 @@
 		"privacy": "",
 		"admission": "£2",
 		"duration": "",
-		"attendees": "12",
+		"attendees": "12"
 	},
 	{
 		"_id": "6",
@@ -75,6 +75,6 @@
 		"privacy": "",
 		"admission": "£2",
 		"duration": "",
-		"attendees": "12",
-	},
+		"attendees": "12"
+	}
 ]

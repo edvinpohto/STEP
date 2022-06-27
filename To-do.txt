@@ -1,5 +1,3 @@
 To Do:
-
-- Set up Next.js
-- Set up MongoDB with Mongoose
-- How do I implement the API? Next.js? Does Next run Node?
+- I have the connection bit.
+- I need to somehow connect the auth to the database.
