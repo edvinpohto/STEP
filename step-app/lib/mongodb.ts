@@ -1,26 +1,22 @@
 // This approach is taken from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
-import { Db, MongoClient, MongoClientOptions } from "mongodb"
+import { MongoClient, MongoClientOptions } from "mongodb"
 
-const MONGODB_URI: any = process.env.MONGODB_URI
-const MONGODB_DB = process.env.MONGODB_DB
-
-let cachedClient: MongoClient;
-let cachedDb: Db;
-
-let client
-let clientPromise: Promise<MongoClient>
-
-//Added this interface to remove typscript error
+//Interface of types for the below options
 interface myMongoOptions extends MongoClientOptions {
   useUnifiedTopology: boolean;
   useNewUrlParser: boolean;
 }
+
+const MONGODB_URI = process.env.MONGODB_URI
 
 // set the connection options
 const options: myMongoOptions = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 };
+
+let client
+let clientPromise: Promise<MongoClient>
 
 if (!MONGODB_URI) {
   throw new Error("Please add your Mongo URI to .env.local")
@@ -45,41 +41,3 @@ if (process.env.NODE_ENV === "development") {
 export default clientPromise
 
 // Got help to fix type errors from: https://github.com/nextauthjs/next-auth/discussions/4165
-
-///////////////////////////////////////////////////////////////////////////
-/////////////// connectToDatabase Functio //////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
-export async function connectToDatabase() {
-  // check the cached.
-  if (cachedClient && cachedDb) {
-    // load from cache
-    return {
-      client: cachedClient,
-      db: cachedDb,
-    };
-  }
-
-  // check the MongoDB URI
-  if (!MONGODB_URI) {
-    throw new Error("Define the MONGODB_URI environmental variable");
-  }
-  // check the MongoDB DB
-  if (!MONGODB_DB) {
-    throw new Error("Define the MONGODB_DB environmental variable");
-  }
-
-  // Connect to cluster
-  let client = new MongoClient(MONGODB_URI);
-  await client.connect();
-  let db = client.db(MONGODB_DB);
-
-  // set cache
-  cachedClient = client;
-  cachedDb = db;
-
-  return {
-    client: cachedClient,
-    db: cachedDb,
-  };
-}

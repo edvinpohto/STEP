@@ -20,3 +20,7 @@ declare module "next-auth" {
 declare global {
   var _mongoClientPromise: Promise<MongoClient>;
 }
+
+declare global {
+  var MONGODB_URI: string;
+}

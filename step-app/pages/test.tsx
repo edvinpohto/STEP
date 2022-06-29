@@ -1,14 +1,13 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
-import { connectToDatabase } from '../lib/mongodb'
+import clientPromise from '../lib/mongodb'
 import styles from '../styles/Layout.module.css'
-import TestEvents from '../components/events'
+import TestEvents from '../components/Test'
 
-const Test: NextPage = ({ properties }: any) => {
-
+const Test: NextPage = ({ properties }: any, isConnected) => {
   return (
-    <div className={styles.container}>
+    <div className="grid grid-cols-1 place-content-center place-items-center p-5">
       <Head>
         <title>St Andrews Events Platform</title>
         <meta name="keywords" content="STEP, St Andrews, Events" />
@@ -17,6 +16,14 @@ const Test: NextPage = ({ properties }: any) => {
         <div>
           <h1>Welcome to the page</h1>
         </div>
+
+        {isConnected ? (
+          <h2 className="subtitle">You are connected to MongoDB</h2>
+        ) : (
+          <h2 className="subtitle">
+            You are NOT connected to MongoDB.
+          </h2>
+        )}
 
         <div>
           <TestEvents />
@@ -35,15 +42,38 @@ const Test: NextPage = ({ properties }: any) => {
   )
 }
 
-export async function getServerSideProps(context:GetServerSideProps) {
-  const { db } = await connectToDatabase()
+export async function getServerSideProps(context: GetServerSideProps) {
+  try {
+    // DEFAULT
+    // await clientPromise
 
-  const events = await db.collection("events").find({}).toArray();
+    // `await clientPromise` will use the default database passed in the MONGODB_URI
+    // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
+    //
+    // `const client = await clientPromise`
+    // `const db = client.db("myDatabase")`
+    //
+    // Then you can execute queries against your database like so:
+    // db.find({}) or any of the MongoDB Node Driver commands
 
-  const properties = JSON.parse(JSON.stringify(events));
+    const client = await clientPromise
+    const db = client.db("step")
 
-  return {
-    props: { properties: properties },
+    const events = await db.collection("events").find({}).toArray();
+
+    const properties = JSON.parse(JSON.stringify(events));
+
+    return {
+      props: { 
+        properties: properties,
+        isConnected: true,
+      },
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      props: { isConnected: false },
+    }
   }
 }
 

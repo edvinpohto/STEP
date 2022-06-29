@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { connectToDatabase } from "../../lib/mongodb";
+import clientPromise from "../../lib/mongodb";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  let { db } = await connectToDatabase();
+  const client = await clientPromise
+    const db = client.db("step")
 
   const events = await db.collection("events").find({}).toArray();
 

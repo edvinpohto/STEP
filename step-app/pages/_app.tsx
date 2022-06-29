@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import '../styles/globals.css'
+import 'tailwindcss/tailwind.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 
@@ -8,11 +9,11 @@ function MyApp({
   pageProps: {session, ...pageProps},
 }: AppProps) {
   return (
-    <Layout>
+    // <Layout>
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>
-    </Layout>
+    // </Layout>
   )
 }
 

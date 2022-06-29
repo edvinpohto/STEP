@@ -4,8 +4,8 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../lib/mongodb"
 
-
 export default NextAuth({
+
   adapter: MongoDBAdapter(clientPromise),
   // Configure one or more authentication providers
   providers: [
