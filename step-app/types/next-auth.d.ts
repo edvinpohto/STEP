@@ -1,4 +1,7 @@
 import NextAuth from "next-auth"
+import type { NextComponentType, NextPageContext } from 'next';
+// import type { Session } from 'next-auth';
+import type { Router } from 'next/router';
 
 declare module "next-auth" {
   /**
@@ -11,4 +14,9 @@ declare module "next-auth" {
       email: string
     }
   }
+}
+
+// https://github.com/nextauthjs/next-auth/discussions/4165
+declare global {
+  var _mongoClientPromise: Promise<MongoClient>;
 }

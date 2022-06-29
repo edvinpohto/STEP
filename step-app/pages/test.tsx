@@ -3,10 +3,9 @@ import Head from 'next/head'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 import { connectToDatabase } from '../lib/mongodb'
 import styles from '../styles/Layout.module.css'
+import TestEvents from '../components/events'
 
 const Test: NextPage = ({ properties }: any) => {
-
-  console.log(properties)
 
   return (
     <div className={styles.container}>
@@ -17,6 +16,10 @@ const Test: NextPage = ({ properties }: any) => {
       </Head>
         <div>
           <h1>Welcome to the page</h1>
+        </div>
+
+        <div>
+          <TestEvents />
         </div>
 
         <div>
