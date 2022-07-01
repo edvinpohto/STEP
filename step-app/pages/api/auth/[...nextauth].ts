@@ -111,11 +111,11 @@ export default NextAuth({
   },
 
   // pages: {
-  //   signIn: '/signin', // Displays signin buttons
+  //   signIn: 'api/auth/signin', // Displays signin buttons
   //   // signOut: '/auth/signout', // Displays form with sign out button
-  //   error: '/auth/error', // Error code passed in query string as ?error=
-  //   verifyRequest: '/verify-request', // Used for check email page
-  //   newUser: '/account/welcome', // If set, new users will be directed here on first sign in
+  //   // error: '/auth/error', // Error code passed in query string as ?error=
+  //   // verifyRequest: '/verify-request', // Used for check email page
+  //   // newUser: '/account/welcome', // If set, new users will be directed here on first sign in
   // },
 
   theme: {
