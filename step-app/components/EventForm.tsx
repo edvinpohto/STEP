@@ -1,6 +1,10 @@
-import { useSession, signIn, signOut } from "next-auth/react"
 import React from "react"
-import { Form } from '../types/index'
+import { getSession } from "next-auth/react"
+import { tagsToArray } from "../utils/tagsToArray"
+import { getUserData } from "../utils/getUserData"
+
+let session = getUserData()
+console.log(session)
 
 export default function EventForm() {
   // Handles the submit event on form submit.
@@ -8,26 +12,33 @@ export default function EventForm() {
     // Stop the form from submitting and refreshing the page.
     e.preventDefault()
 
-    // Get data from the form.
+		// Parse the tags from the form into an array of tags
+		let tags: string = e.target.eventTags.value
+		// console.log("Tags:", tags)
+		let formattedTags: string[] = tagsToArray(tags)
+		// console.log("Array of tags:", formattedTags)
+
+		// Get data from the form.
 		// No _id field. MongoDB makes one automatically?
 		// The location field does not work yet?
-    const data = {
-      eventName: e.target.eventName.value,
-      eventDate: e.target.eventDate.value,
-      eventLocation: e.target.eventLocation.value,
-      eventDescription: e.target.eventDescription.value,
-      eventOrganiser: e.target.eventOrganiser.value,
-      eventTags: e.target.eventTags.value,
-      eventPrivacy: e.target.eventPrivacy.value,
-      eventAdmission: e.target.eventAdmission.value,
-      eventDuration: e.target.eventDuration.value,
-    }
+		const data = {
+			eventName: e.target.eventName.value,
+			eventDate: e.target.eventDate.value,
+			//   eventLocation: e.target.eventLocation.value,
+			eventDescription: e.target.eventDescription.value,
+			eventOrganiser: e.target.eventOrganiser.value,
+			//   eventTags: e.target.eventTags.value,
+			eventTags: formattedTags,
+			eventPrivacy: e.target.eventPrivacy.checked,
+			eventAdmission: +e.target.eventAdmission.value,
+			eventDuration: +e.target.eventDuration.value,
+		}
 
     // Send the data to the server in JSON format.
     const JSONdata = JSON.stringify(data)
 
     // API endpoint where we send form data.
-    const endpoint = '/api/newEventHandler'
+    const endpoint = '/api/createEvent'
 
     // Form the request for sending data to the server.
     const options = {
@@ -57,10 +68,10 @@ export default function EventForm() {
 			</div>
 
 			{/* Basic HTML Form */}
-			<div className="py-4 p-5 border-4 rounded-md border-grey mt-3">
-				// We pass the event to the handleSubmit() function on submit.
+			<div className="py-4 p-5 border-4 rounded-md border-grey mt-3 w-1/5">
+				{/* We pass the event to the handleSubmit() function on submit. */}
 				<form onSubmit={handleSubmit}>
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventName">Event name:* </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -71,7 +82,7 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventDate">Date and time:* </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -109,7 +120,7 @@ export default function EventForm() {
 					</div>
 					<br /> */}
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventDescription">Description:* </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -120,7 +131,7 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventOrganiser">Organiser:* </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -131,7 +142,7 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventTags">Tags: </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -141,7 +152,7 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventPrivacy">Private event: </label>
 						<input 
 						className="form-checkbox px-2 py-2 rounded-sm"
@@ -151,7 +162,7 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventAdmission">Admission fee (£): </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -161,7 +172,7 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<div className="grid place-content-between mb-2">
+					<div className="grid place-content-around mb-2">
 						<label htmlFor="eventDuration">Duration (h): </label>
 						<input 
 						className="form-input px-4 py-3 rounded-full h-1"
@@ -171,10 +182,12 @@ export default function EventForm() {
 						/>
 					</div>
 
-					<button type="submit" className="px-4 py-1 text-sm text-sky-600 font-semibold rounded-full border border-sky-200 hover:text-white hover:bg-sky-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">Submit</button>
+					<div className="grid place-content-around pt-2">
+						<button type="submit" className="px-4 py-1 text-sm text-sky-600 font-semibold rounded-full border border-sky-200 hover:text-white hover:bg-sky-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">Submit</button>
+					</div>
 				</form>
 			</div>
-			<p>Fields denoted with an asterisk (*) are mandatory.</p>
+			<p className="text-xs">Fields denoted with an asterisk (*) are mandatory.</p>
 		</div>   
   )
 }

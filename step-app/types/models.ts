@@ -9,3 +9,11 @@ export interface Form {
     eventAdmission: number,
     eventDuration: number,
 }
+
+export interface Session {
+    user: {
+    email: string,
+    image: string,
+    name: string,
+    }
+  }

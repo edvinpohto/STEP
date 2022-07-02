@@ -40,4 +40,9 @@ if (process.env.NODE_ENV === "development") {
 // separate module, the client can be shared across functions.
 export default clientPromise
 
+export const connectToDatabase = async () => {
+  const client = await clientPromise;
+  return { client, db: client.db() };
+}
+
 // Got help to fix type errors from: https://github.com/nextauthjs/next-auth/discussions/4165

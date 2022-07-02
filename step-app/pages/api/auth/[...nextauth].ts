@@ -1,14 +1,20 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
-import GithubProvider from "next-auth/providers/github"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "../../../lib/mongodb"
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
+import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
+// import { OAuthConfig } from "next-auth/providers";
+// import CredentialsProvider from "next-auth/providers/credentials"
 
 export default NextAuth({
 
   adapter: MongoDBAdapter(clientPromise),
   // Configure one or more authentication providers
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
@@ -20,54 +26,6 @@ export default NextAuth({
       //     // to be able identify the account when added to a database
       //   }
       // }
-    }),
-    CredentialsProvider({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
-      name: 'Credentials',
-      // The credentials is used to generate a suitable form on the sign in page.
-      // You can specify whatever fields you are expecting to be submitted.
-      // e.g. domain, username, password, 2FA token, etc.
-      // You can pass any HTML attribute to the <input> tag through the object.
-      credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: {  label: "Password", type: "password" }
-      },
-      async authorize(credentials, req) {
-
-        // https://stackoverflow.com/questions/70400008/using-mongodb-adapter-in-nextauth-not-working
-        // const { email, password } = credentials
-
-        // if(email !== 'test@test.com' || password !== 'password123') {
-        //   throw new Error('User does not exists. Please make sure you insert the correct email & password.')
-        // }
-
-        // return {
-        //   id: 1,
-        //   name: 'Tester',
-        //   email: 'test@test.com'
-        // }
-
-
-        // You need to provide your own logic here that takes the credentials
-        // submitted and returns either a object representing a user or value
-        // that is false/null if the credentials are invalid.
-        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
-        // You can also use the `req` object to obtain additional parameters
-        // (i.e., the request IP address)
-        const res: any = await fetch("../../../../model_user.json", {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" }
-        })
-        const user: any = await res.json()
-  
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user
-        }
-        // Return null if user data could not be retrieved
-        return null
-      }
     }),
   ],
 
@@ -102,7 +60,7 @@ export default NextAuth({
     },
     // redirect: async ({ url, baseUrl }) => {
     //   return baseUrl
-    // }
+    // },
   },
   
   jwt: {
@@ -124,3 +82,46 @@ export default NextAuth({
     logo: "https://seeklogo.com/images/U/university-of-st-andrews-seal-logo-CCC7DF3F6B-seeklogo.com.png" // Absolute URL to image
   }
 })
+
+
+// NEXTAUTH DISCOURAGES THE USE OF CREDENTIALS PROVIDER SO WE WILL NOT USE IT THEN
+// CredentialsProvider({
+//   // The name to display on the sign in form (e.g. 'Sign in with...')
+//   name: 'Credentials',
+//   // The credentials is used to generate a suitable form on the sign in page.
+//   // You can specify whatever fields you are expecting to be submitted.
+//   // e.g. domain, username, password, 2FA token, etc.
+//   // You can pass any HTML attribute to the <input> tag through the object.
+//   credentials: {
+//     username: { label: "Email", type: "email", placeholder: "jsmith" },
+//     password: {  label: "Password", type: "password" }
+//   },
+//   async authorize(credentials, req) {
+//     // You need to provide your own logic here that takes the credentials
+//     // submitted and returns either a object representing a user or value
+//     // that is false/null if the credentials are invalid.
+//     // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+//     // You can also use the `req` object to obtain additional parameters
+//     // (i.e., the request IP address)
+
+//     // Test credentials for now
+//     const user = { id: 1, name: "J Smith", email: "jsmith@example.com", password: "test" }
+
+//     // const res: any = await fetch("../../../model_user.json", {
+//     //   method: 'POST',
+//     //   body: JSON.stringify(credentials),
+//     //   headers: { "Content-Type": "application/json" }
+//     // })
+//     // const user: any = await res.json()
+    
+//     // if (res.ok && user) if using fetch function
+//     if (user) {
+//       // Any object returned will be saved in `user` property of the JWT
+//       return user
+//     } else {
+//       // If you return null then an error will be displayed advising the user to check their details.
+//       return null
+//       // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+//     }
+//   }
+// }),
