@@ -43,30 +43,21 @@ export default NextAuth({
   secret: process.env.SECRET,
 
   callbacks: {
-    // first time jwt callback is run, user object is available
-    jwt: ({ token, user }) => {
-      if (user) {
-        token.id = user.id
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.sub;
       }
-
-      return token
+      return session;
     },
-    session: ({ session, token }) => {
-      if (token) {
-        session.id = token.id
-      }
-
-      return session
-    },
-    // redirect: async ({ url, baseUrl }) => {
-    //   return baseUrl
-    // },
+  },
+  session: {
+    strategy: 'jwt',
   },
   
-  jwt: {
-    secret: process.env.SECRET,
-    // encryption: true,
-  },
+  // jwt: {
+  //   secret: process.env.SECRET,
+  //   // encryption: true,
+  // },
 
   // pages: {
   //   signIn: 'api/auth/signin', // Displays signin buttons

@@ -4,7 +4,7 @@ import { tagsToArray } from "../utils/tagsToArray"
 import { getUserData } from "../utils/getUserData"
 
 let session = getUserData()
-console.log(session)
+// console.log(session)
 
 export default function EventForm() {
   // Handles the submit event on form submit.
