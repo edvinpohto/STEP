@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const client = await clientPromise
-    const db = client.db("step")
+  const db = client.db("step")
 
   const events = await db.collection("events").find({}).toArray();
 

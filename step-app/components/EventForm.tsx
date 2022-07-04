@@ -1,16 +1,23 @@
 import React from "react"
 import { getSession } from "next-auth/react"
 import { tagsToArray } from "../utils/tagsToArray"
-import { getUserData } from "../utils/getUserData"
 
-let session = getUserData()
-// console.log(session)
+interface CurrentUser {
+  name: string;
+  email: string;
+	image: string;
+	id: string;
+}
 
 export default function EventForm() {
   // Handles the submit event on form submit.
   const handleSubmit = async (e: any) => {
     // Stop the form from submitting and refreshing the page.
     e.preventDefault()
+
+		const session = await getSession();
+		// console.log(session?.user)
+		let userData: CurrentUser = session?.user
 
 		// Parse the tags from the form into an array of tags
 		let tags: string = e.target.eventTags.value
@@ -32,6 +39,7 @@ export default function EventForm() {
 			eventPrivacy: e.target.eventPrivacy.checked,
 			eventAdmission: +e.target.eventAdmission.value,
 			eventDuration: +e.target.eventDuration.value,
+			currentUser: userData
 		}
 
     // Send the data to the server in JSON format.

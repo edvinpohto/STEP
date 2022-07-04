@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../lib/mongodb";
+import { CurrentUser } from "../../types/models";
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+
 	// Get data submitted in request's body.
 	const body = req.body
 
@@ -21,15 +23,30 @@ export default function handler(
 
 	// Found the name.
 	// Sends a HTTP success code
-	res.status(200).json({ data: 
-		`${body.eventName} 
-		${body.eventDate} 
-		${body.eventLocation}
-		${body.eventDescription} 
-		${body.eventOrganiser} 
-		${body.eventTags} 
-		${body.eventPrivacy} 
-		${body.eventAdmission} 
-		${body.eventDuration}` 
+	res.status(200).json({data: 
+		`Event name: ${body.eventName} 
+		Event date: ${body.eventDate} 
+		Event location: ${body.eventLocation}
+		Event description: ${body.eventDescription} 
+		Event organiser: ${body.eventOrganiser} 
+		Event tags: ${body.eventTags} 
+		Event privacy: ${body.eventPrivacy} 
+		Event admission: ${body.eventAdmission} 
+		Event duration: ${body.eventDuration}
+		Submission by user: ${body.currentUser.name}
+		User's id: ${body.currentUser.id}` 
 	})
-  }
+
+	try {
+		const client = await clientPromise
+  	const db = client.db("step")
+
+		const events = db.collection("events")
+		const result = await events.insertOne(body);
+		console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
+		await client.close();
+	} catch(error) {
+		throw(error)
+	}
+}

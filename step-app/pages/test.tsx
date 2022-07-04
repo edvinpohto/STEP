@@ -29,11 +29,22 @@ const Test: NextPage = ({ properties }: any, isConnected) => {
           <TestEvents />
         </div>
 
+        {/* For the old style of events */}
         <div>
           {properties && properties.map((property: { title: any; organiser: any; _id: number }) => (
             <div key={property._id} className={styles.card}>
               <p>{property.title}</p>
               <p>Organised by {property.organiser}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* For the new style of events */}
+        <div>
+          {properties && properties.map((property: { eventName: any; eventOrganiser: any; _id: number }) => (
+            <div key={property._id} className={styles.card}>
+              <p>{property.eventName}</p>
+              <p>Organised by {property.eventOrganiser}</p>
             </div>
           ))}
         </div>
