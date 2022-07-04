@@ -45,7 +45,9 @@ export default async function handler(
 		const result = await events.insertOne(body);
 		console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
-		await client.close();
+		// If the client is closed then there will be an error if someone tries to submit many events
+		// But is there a problem if the client is not closed?
+		// await client.close();
 	} catch(error) {
 		throw(error)
 	}

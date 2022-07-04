@@ -1,8 +1,13 @@
 import { useSession, signIn, signOut } from "next-auth/react"
+import Navbar from "../components/Navbar"
 
 export default function Component() {
   
     return(
-        <h1>Map</h1>
+        <>
+            <Navbar />
+
+            <h1>Map</h1>
+        </>
     )
 }

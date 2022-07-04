@@ -1,3 +1,5 @@
+// This is a test file, containing a mix of different methods etc.
+
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
