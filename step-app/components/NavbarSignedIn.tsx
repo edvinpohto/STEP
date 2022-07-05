@@ -1,31 +1,23 @@
 // Component from https://tailwindui.com/components/application-ui/navigation/navbars
 
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import getUserCred from '../utils/getUserCred'
-
-async function getUserImage() {
-  let user = await getUserCred()
-  let userImage = user.image
-  console.log(userImage)
-
-  return userImage
-}
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Feed', href: '/', current: true },
   { name: 'Map', href: 'map', current: false },
+  { name: 'About', href: 'about', current: false },
 ]
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function NavbarSignedIn() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10 drop-shadow-lg">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -43,16 +35,11 @@ export default function Navbar() {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
-                  />
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                    alt="Workflow"
-                  />
+                  <Image 
+                  src="/whitelogo.png" 
+                  alt="STEP" 
+                  width="70" 
+                  height="40" />
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
@@ -112,7 +99,7 @@ export default function Navbar() {
                             href="/user"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Your Profile
+                            Your events
                           </a>
                         )}
                       </Menu.Item>
@@ -122,14 +109,14 @@ export default function Navbar() {
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
+                            Liked events
                           </a>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/api/auth/signout"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out

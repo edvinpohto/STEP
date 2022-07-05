@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from "next-auth/react"
-import Navbar from "../components/Navbar"
+import Navbar from "../components/NavbarSignedIn"
 
 export default function Component() {
   
