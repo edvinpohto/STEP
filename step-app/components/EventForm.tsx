@@ -106,7 +106,7 @@ export default function EventForm() {
 						<label htmlFor="eventLocation">Location:* </label>
 						<div className="grid grid-cols-2 gap-3 py-2">
 							<input type="street" 
-										id="autocomplete" 
+										id="autocomplete"
 										placeholder="Street"
 										className="form-input px-4 py-3 rounded-full h-1" />
 							

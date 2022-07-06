@@ -11,6 +11,14 @@ export interface Event {
     eventDuration: number,
 }
 
+export interface Card {
+    eventName: string,
+    eventDate: string,
+    eventLocation: any,
+    eventOrganiser: string,
+    eventAdmission: number,
+}
+
 export interface Session {
     user: {
     email: string,

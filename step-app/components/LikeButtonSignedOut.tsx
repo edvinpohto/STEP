@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/react"
+import signInRedirect from "../utils/signInRedirect"
 
 export default function LikeButtonSignedOut() {
   return(
@@ -15,8 +15,4 @@ export default function LikeButtonSignedOut() {
       </div>
     </div>
   )
-}
-
-function signInRedirect() {
-  signIn()
 }
