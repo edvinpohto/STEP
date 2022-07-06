@@ -3,16 +3,21 @@ import type { GetServerSideProps, NextPage } from 'next'
 import { NextResponse } from "next/server";
 import Head from 'next/head'
 import PleaseSignIn from "../components/PleaseSignIn";
-import EventForm from "../components/EventForm";
+import NavbarSignedIn from "../components/NavbarSignedIn";
+import NavbarSignedOut from "../components/NavbarSignedOut";
+import EventForm2 from "../components/EventForm2";
 
 const NewEvent: NextPage = () => {
     const { data: session, status } = useSession();
   
     if (status === 'loading') {
       return (
-        <div className='grid grid-cols-1 place-content-center place-items-center p-5'>
-          <h1>Loading...</h1>
-        </div>
+        <>
+          <NavbarSignedIn />
+          <div className='grid grid-cols-1 place-content-center place-items-center p-5'>
+            <h1>Loading...</h1>
+          </div>
+        </>
       )
     }
   
@@ -24,14 +29,18 @@ const NewEvent: NextPage = () => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
 
-					<EventForm />
+          <NavbarSignedIn />
+					<EventForm2 />
 
         </div>
       )
     }
     
     return (
+      <>
+        <NavbarSignedOut />
         <PleaseSignIn />
+      </>
     )
   }
   
