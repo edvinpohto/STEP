@@ -5,7 +5,7 @@ import Head from 'next/head'
 import PleaseSignIn from "../components/PleaseSignIn";
 import NavbarSignedIn from "../components/NavbarSignedIn";
 import NavbarSignedOut from "../components/NavbarSignedOut";
-import EventForm2 from "../components/EventForm2";
+import EventForm from "../components/EventForm";
 
 const NewEvent: NextPage = () => {
     const { data: session, status } = useSession();
@@ -30,7 +30,7 @@ const NewEvent: NextPage = () => {
           </Head>
 
           <NavbarSignedIn />
-					<EventForm2 />
+					<EventForm />
 
         </div>
       )

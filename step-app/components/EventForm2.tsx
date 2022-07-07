@@ -1,7 +1,15 @@
-import useInput from "../hooks/useInput"
+// import useInput from "../hooks/useInput"
+
+interface Result {
+  center: number[];
+  place_name: string;
+  place_type: string[];
+  relevance: number;
+  text: string;
+}
 
 export default function EventForm2() {
-  const address = useInput("");
+  // const address: any = useInput("");
 
   return (
     <>
@@ -15,6 +23,7 @@ export default function EventForm2() {
           
         <div className="mt-5">
           <form action="#" method="POST">
+          {/* <form onSubmit={handleSubmit}> */}
             <div className="shadow">
               <div className="px-4 py-5 bg-white space-y-6">
                 <div className="grid grid-cols-6 gap-4">
@@ -45,7 +54,7 @@ export default function EventForm2() {
 
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
                   {/* To get the location as coordinates: https://docs.mapbox.com/api/search/geocoding/ */}
-                  <div className="col-span-6 sm:col-span-4">
+                  {/* <div className="col-span-6 sm:col-span-4">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-red-900">
                       Location*
                     </label>
@@ -61,7 +70,7 @@ export default function EventForm2() {
                     />
                     {address.suggestions?.length > 0 && (
                       <div className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                        {address.suggestions.map((suggestion: any, index) => {
+                        {address.suggestions.map((suggestion: Result, index: any) => {
                           return (
                             <div
                               key={index}
@@ -77,7 +86,7 @@ export default function EventForm2() {
                         })}
                       </div>
                     )}
-                  </div>
+                  </div> */}
 
                   <div className="col-span-6 sm:col-span-4">
                     <label htmlFor="eventOrganiser" className="block text-sm font-medium text-gray-700">

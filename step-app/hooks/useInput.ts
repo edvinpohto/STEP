@@ -5,7 +5,7 @@ const useInput = (initialValue: any) => {
   const [value, setvalue] = useState(initialValue);
   const [suggestions, setsuggestions] = useState([]);
 
-  const handleChange = async (event: { target: { value: any; }; }) => {
+  const handleChange = async (event: { target: { value: string }; }) => {
     setvalue(event.target.value);
 
     try {

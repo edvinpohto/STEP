@@ -33,6 +33,7 @@ export default async function handler(
 		Event privacy: ${body.eventPrivacy} 
 		Event admission: ${body.eventAdmission} 
 		Event duration: ${body.eventDuration}
+		Event image: ${body.eventImage}
 		Submission by user: ${body.currentUser.name}
 		User's id: ${body.currentUser.id}` 
 	})

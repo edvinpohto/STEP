@@ -4,6 +4,7 @@ export interface Event {
     eventDate: string,
     eventLocation: any,
     eventDescription: string,
+    eventImage: any,
     eventOrganiser: string,
     eventTags: string[],
     eventPrivacy: boolean,
