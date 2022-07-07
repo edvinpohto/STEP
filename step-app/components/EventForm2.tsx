@@ -1,6 +1,8 @@
-
+import useInput from "../hooks/useInput"
 
 export default function EventForm2() {
+  const address = useInput("");
+
   return (
     <>
       <div>
@@ -41,17 +43,40 @@ export default function EventForm2() {
                     />
                   </div>
 
+                  {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
+                  {/* To get the location as coordinates: https://docs.mapbox.com/api/search/geocoding/ */}
                   <div className="col-span-6 sm:col-span-4">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-red-900">
                       Location*
                     </label>
                     <input
+                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       type="text"
                       name="eventLocation"
                       id="eventLocation"
                       // autoComplete="location"
-                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      placeholder="Address"
+                      {...address}
+                      // isTyping={address.value !== ""}
                     />
+                    {address.suggestions?.length > 0 && (
+                      <div className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        {address.suggestions.map((suggestion: any, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className="border-t-2"
+                              onClick={() => {
+                                address.setvalue(suggestion.place_name);
+                                address.setsuggestions([]);
+                              }}
+                            >
+                              {suggestion.place_name}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
 
                   <div className="col-span-6 sm:col-span-4">
