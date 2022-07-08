@@ -4,7 +4,7 @@ export interface Event {
     eventDate: string,
     eventLocation: any,
     eventDescription: string,
-    eventImage: any,
+    eventImage: string,
     eventOrganiser: string,
     eventTags: string[],
     eventPrivacy: boolean,
@@ -18,6 +18,7 @@ export interface Card {
     eventLocation: any,
     eventOrganiser: string,
     eventAdmission: number,
+    eventImage: string,
 }
 
 export interface Session {

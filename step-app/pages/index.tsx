@@ -43,6 +43,7 @@ const Home: NextPage = ({ properties }: any) => {
               <EventCardSignedIn 
               eventName={property.eventName}
               eventDate={property.eventDate}
+              eventImage={property.eventImage}
               eventOrganiser={property.eventOrganiser}
               eventLocation={property.eventLocation}
               eventAdmission={property.eventAdmission}/>
@@ -73,6 +74,7 @@ const Home: NextPage = ({ properties }: any) => {
                 <EventCardSignedOut 
                 eventName={property.eventName}
                 eventDate={property.eventDate}
+                eventImage={property.eventImage}
                 eventOrganiser={property.eventOrganiser}
                 eventLocation={property.eventLocation}
                 eventAdmission={property.eventAdmission}/>

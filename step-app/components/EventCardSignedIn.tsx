@@ -1,6 +1,11 @@
 import { Card } from '../types/models'
+import formatDateAndTime from "../utils/formatDateAndTime";
 
 export default function EventCardSignedIn(property: Card) {
+	 // Parse date & time into desired form
+	 let dateAndTime: string = property.eventDate
+	 let formattedDateAndTime: string = formatDateAndTime(dateAndTime)
+
 	return(
 		<div className="grid m-3 sm:w-96">
 			<div className="flex rounded-sm shadow-lg h-32 w-full hover:shadow-xl">
@@ -26,7 +31,7 @@ export default function EventCardSignedIn(property: Card) {
 					{/* Text */}
 					<div className="block pt-2">
 						{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
-						<span className="text-slate-500 text-xs">{property.eventDate}</span>
+						<span className="text-slate-500 text-xs">{formattedDateAndTime}</span>
 					</div>
 					<span className="block mt-2 text-sm mr-4">{property.eventName}</span>
 					<span className="block text-xs">Organiser: {property.eventOrganiser}</span>

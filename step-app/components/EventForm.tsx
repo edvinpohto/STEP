@@ -1,6 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { getSession } from "next-auth/react"
 import { tagsToArray } from "../utils/tagsToArray"
+import useInput from "../hooks/useInput";
+import handleSubmit from "../utils/submitForm";
+
+import axios from "axios";
+const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/";
 
 interface CurrentUser {
   name: string;
@@ -18,65 +23,39 @@ interface Result {
 }
 
 export default function EventForm() {
-  // Handles the submit event on form submit.
-  const handleSubmit = async (e: any) => {
-    // Stop the form from submitting and refreshing the page.
-    e.preventDefault()
+  // For location picker
+  const address: any = useInput("");
 
-		const session = await getSession();
-		// console.log(session?.user)
-		let userData: CurrentUser = session?.user
+  // For image uploader
+  const [file, setFile] = useState<any>();
+  const [uploadingStatus, setUploadingStatus] = useState<any>();
+  const [uploadedFile, setUploadedFile] = useState<any>();
 
-		// Parse the tags from the form into an array of tags
-		let tags: string = e.target.eventTags.value
-		// console.log("Tags:", tags)
-		let formattedTags: string[] = tagsToArray(tags)
-		// console.log("Array of tags:", formattedTags)
+  const selectFile = (e: any) => {
+    setFile(e.target.files[0]);
+  };
 
-		// Get data from the form.
-		// No _id field. MongoDB makes one automatically?
-		// The location field does not work yet?
-		const data = {
-			eventName: e.target.eventName.value,
-			eventDate: e.target.eventDate.value,
-			//   eventLocation: e.target.eventLocation.value,
-			eventDescription: e.target.eventDescription.value,
-			eventImage: e.target.eventImage.value,
-			eventOrganiser: e.target.eventOrganiser.value,
-			//   eventTags: e.target.eventTags.value,
-			eventTags: formattedTags,
-			eventPrivacy: e.target.eventPrivacy.checked,
-			eventAdmission: +e.target.eventAdmission.value,
-			eventDuration: +e.target.eventDuration.value,
-			currentUser: userData
-		}
+  const uploadFile = async () => {
+    setUploadingStatus("Uploading the file to AWS S3");
 
-    // Send the data to the server in JSON format.
-    const JSONdata = JSON.stringify(data)
+    let { data } = await axios.post("/api/s3/uploadFile", {
+      name: file.name,
+      type: file.type,
+    });
 
-    // API endpoint where we send form data.
-    const endpoint = '/api/createEvent'
+    console.log(data);
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: 'POST',
-      // Tell the server we're sending JSON.
+    const url = data.url;
+    let { data: newData } = await axios.put(url, file, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-type": file.type,
+        "Access-Control-Allow-Origin": "*",
       },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    }
+    });
 
-    // Send the form data to our forms API on Vercel and get a response.
-    const response = await fetch(endpoint, options)
-
-    // Get the response data from server as JSON.
-    // If server returns the name submitted, that means the form works.
-    const result = await response.json()
-    console.log(`The server has received ${result.data}`)
-  }
+    setUploadedFile(BUCKET_URL + file.name);
+    setFile(null);
+  };
 
   return(
 		<>
@@ -248,6 +227,7 @@ export default function EventForm() {
                   <label className="block text-sm font-medium text-gray-700">Cover photo</label>
                   <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                     <div className="space-y-1 text-center">
+                      {/* Image */}
                       <svg
                         className="mx-auto h-12 w-12 text-gray-400"
                         stroke="currentColor"
@@ -262,16 +242,35 @@ export default function EventForm() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                      <div className="flex text-sm text-gray-600">
+                      {/* Input */}
+                      <div className="grid content-center text-sm text-gray-600">
                         <label
                           htmlFor="eventImage"
                           className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                         >
-                          <span>Upload a file</span>
-                          <input id="eventImage" name="eventImage" type="file" className="sr-only" />
+                          <input 
+                            id="eventImage"   
+                            name="eventImage" 
+                            type="file" 
+                            onChange={(e) => selectFile(e)}
+                            // className="sr-only" 
+                            title={file && file.name}
+                          />
+                          {file && (
+                            <>
+                              <p>Selected file: {file.name}</p>
+                              {/* <button
+                                onClick={uploadFile}
+                                className=" bg-purple-500 text-white p-2 rounded-sm shadow-md hover:bg-purple-700 transition-all"
+                              >
+                                Upload a File!
+                              </button> */}
+                            </>
+                          )}
                         </label>
-                        <p className="pl-1">or drag and drop</p>
+                        {uploadedFile && <img src={uploadedFile} />}
                       </div>
+                      {/* Note */}
                       <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                     </div>
                   </div>
@@ -281,6 +280,7 @@ export default function EventForm() {
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button
                   type="submit"
+                  onClick={uploadFile}
                   className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Submit
