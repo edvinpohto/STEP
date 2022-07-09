@@ -1,27 +1,21 @@
-import mapboxgl from 'mapbox-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
-import { useEffect, useRef } from "react";
+import * as React from 'react';
+import Map, { Marker } from 'react-map-gl';
 
-export default function Component() {
-    const mapContainer = useRef<any>(null);
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-	useEffect(() => {
-		const mapContainer = useRef<any>(null);
-		const map = useRef<mapboxgl.Map | any>(null);
-	
-		mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN ?? '';
-	
-		map.current = new mapboxgl.Map({
-			container: mapContainer.current,
-			style: 'mapbox://styles/mapbox/light-v10',
-			center: [15.4542, 18.7322], // center map on Chad
-			zoom: 1.8
-		})
-	})
-  
-    return (
-        <>
-            <div className="mapContainer"></div>
-        </>
-    )
+export default function Mapbox() {
+	const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN
+
+  return <Map
+	initialViewState={{
+		latitude: 56.33950660627565,
+		longitude: -2.794454438733709,
+		zoom: 12
+	}}
+		style={{width: '100vw', height: '100vh'}}
+		mapStyle="mapbox://styles/mapbox/streets-v9"
+		mapboxAccessToken={MAPBOX_TOKEN}
+	>
+		{/* <Marker longitude={-122.4} latitude={37.8} color="red" /> */}
+</Map>
 }

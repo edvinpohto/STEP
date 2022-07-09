@@ -5,21 +5,15 @@ import Head from 'next/head'
 import NavbarSignedIn from '../components/NavbarSignedIn'
 import NavbarSignedOut from '../components/NavbarSignedOut'
 import NavbarBottom from '../components/NavbarBottom'
-import EventCardSignedIn from '../components/EventCardSignedIn'
-import EventCardSignedOut from '../components/EventCardSignedOut'
-import { Event } from '../types/models'
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useEffect, useRef } from 'react'
 
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import dynamic from 'next/dynamic';
+const Map = dynamic(() => import('../components/Map'), {
+  ssr: false
+});
 
-const Map: NextPage = () => {
+
+const MapPage: NextPage = () => {
   const { data: session, status } = useSession();
-
-  const Map = ReactMapboxGl({
-    accessToken:
-      'pk.eyJ1IjoiZWR2aW5wb2h0byIsImEiOiJjbDVheHk4MWIwMmFjM2VwN29ldGNsdWgwIn0.swu4jAZ9oQg45YtQxuLbVA'
-  });
   
   if (status === 'loading') {
     return (
@@ -39,26 +33,10 @@ const Map: NextPage = () => {
           <title>St Andrews Events Platform</title>
           <meta name="keywords" content="STEP, St Andrews, Events" />
           <link rel="icon" href="/favicon.ico" />
-          {/* <link
-            href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
-            rel="stylesheet"
-          /> */}
         </Head>
   
         <NavbarSignedIn />
-
-        <Map
-          style="mapbox://styles/mapbox/streets-v9"
-          containerStyle={{
-            height: '100vh',
-            width: '100vw'
-          }}
-        >
-          <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-            <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
-          </Layer>
-        </Map>;
-  
+        <Map />
       </div>
     )
   }
@@ -73,9 +51,9 @@ const Map: NextPage = () => {
       </Head>
   
       <NavbarSignedOut />
-  
+      <Map />
     </div>
   )
 }
 
-export default Map
+export default MapPage
