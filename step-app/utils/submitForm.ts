@@ -45,7 +45,7 @@ export default async function handleSubmit(e: any) {
   const data = {
     eventName: e.target.eventName.value,
     eventDate: e.target.eventDate.value,
-    //   eventLocation: e.target.eventLocation.value,
+    eventLocation: e.target.eventLocation.value,
     eventDescription: e.target.eventDescription.value,
     eventImage: imageURL,
     eventOrganiser: e.target.eventOrganiser.value,

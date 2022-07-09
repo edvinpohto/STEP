@@ -99,7 +99,7 @@ export default function EventForm() {
 
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
                   {/* To get the location as coordinates: https://docs.mapbox.com/api/search/geocoding/ */}
-                  {/* <div className="col-span-6 sm:col-span-4">
+                  <div className="col-span-6 sm:col-span-4">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-red-900">
                       Location*
                     </label>
@@ -131,7 +131,7 @@ export default function EventForm() {
                         })}
                       </div>
                     )}
-                  </div> */}
+                  </div>
 
                   <div className="col-span-6 sm:col-span-4">
                     <label htmlFor="eventOrganiser" className="block text-sm font-medium text-gray-700">

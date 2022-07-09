@@ -1,10 +1,12 @@
 import { Card } from '../types/models'
 import formatDateAndTime from "../utils/formatDateAndTime";
+import formatLocation from '../utils/formatLocation';
 
 export default function EventCardSignedIn(property: Card) {
 	 // Parse date & time into desired form
-	 let dateAndTime: string = property.eventDate
-	 let formattedDateAndTime: string = formatDateAndTime(dateAndTime)
+	 let formattedDateAndTime: string = formatDateAndTime(property.eventDate)
+	 // Parse location into desired form
+	 let formattedLocation: string = formatLocation(property.eventLocation)
 
 	return(
 		<div className="grid m-3 sm:w-96">
@@ -38,7 +40,7 @@ export default function EventCardSignedIn(property: Card) {
 					<span className="block text-xs">Organiser: {property.eventOrganiser}</span>
 					<div className="absolute bottom-2 opacity-100 pr-1 w-full text-xs">
 						{/* <span className="inline-block">{property.eventLocation}</span> */}
-						<span className="inline-block">St Andrews, UK</span>
+						<span className="inline-block">{formattedLocation}</span>
 						<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
 					</div>
 				</div>
