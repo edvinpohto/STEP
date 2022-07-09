@@ -1,11 +1,7 @@
 import React, { useState } from "react"
-import { getSession } from "next-auth/react"
-import { tagsToArray } from "../utils/tagsToArray"
 import useInput from "../hooks/useInput";
 import handleSubmit from "../utils/submitForm";
-
 import axios from "axios";
-const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/";
 
 interface CurrentUser {
   name: string;
@@ -21,6 +17,8 @@ interface Result {
   relevance: number;
   text: string;
 }
+
+const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/";
 
 export default function EventForm() {
   // For location picker
@@ -272,6 +270,7 @@ export default function EventForm() {
                       </div>
                       {/* Note */}
                       <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                      <p className="text-xs text-gray-500">Images are cropped to a 2x3 aspect ratio.</p>
                     </div>
                   </div>
                 </div>

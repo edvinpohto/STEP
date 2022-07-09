@@ -12,9 +12,10 @@ export default function EventCardSignedIn(property: Card) {
 				{/* <!-- media container --> */}
 				<div className="relative flex-none bg-none float-left h-full w-1/4">
 						<img 
-						src="https://source.unsplash.com/random/" 
+						// src="https://source.unsplash.com/random/" 
+						src={property.eventImage} 
 						alt="img" 
-						className="aspect-auto bg-center object-none h-full w-full"/>
+						className="aspect-auto object-cover h-full w-full"/>
 				</div>
 				{/* <!-- body container --> */}
 				<div className="relative grow bg-white float-left h-full px-3 w-3/5">
