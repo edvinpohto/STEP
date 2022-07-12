@@ -67,20 +67,20 @@ const Home: NextPage = ({ properties }: any) => {
       <NavbarSignedOut />
   
       <div className='grid p-3 sm:justify-center'>
-            {properties && properties.map((property: Event) => (
-              <div 
-              key={property._id} 
-              className='w-full'>
-                <EventCardSignedOut 
-                eventName={property.eventName}
-                eventDate={property.eventDate}
-                eventImage={property.eventImage}
-                eventOrganiser={property.eventOrganiser}
-                eventLocation={property.eventLocation}
-                eventAdmission={property.eventAdmission}/>
-              </div>
-            ))}
+        {properties && properties.map((property: Event) => (
+          <div 
+          key={property._id} 
+          className='w-full'>
+            <EventCardSignedOut 
+            eventName={property.eventName}
+            eventDate={property.eventDate}
+            eventImage={property.eventImage}
+            eventOrganiser={property.eventOrganiser}
+            eventLocation={property.eventLocation}
+            eventAdmission={property.eventAdmission}/>
           </div>
+        ))}
+      </div>
     </div>
   )
 }

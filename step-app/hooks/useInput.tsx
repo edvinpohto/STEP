@@ -18,6 +18,8 @@ const useInput = (initialValue: any) => {
     }
   };
 
+  console.log(value)
+
   return {
     value,
 	  onChange: handleChange,

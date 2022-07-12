@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import useInput from "../hooks/useInput";
 import handleSubmit from "../utils/submitForm";
 import axios from "axios";
+import addressToCoordinates from '../utils/geocode'
 
 interface CurrentUser {
   name: string;
@@ -77,6 +78,7 @@ export default function EventForm() {
                       Event name*
                     </label>
                     <input
+                      required
                       type="text"
                       name="eventName"
                       id="eventName"
@@ -90,6 +92,7 @@ export default function EventForm() {
                       Date and time*
                     </label>
                     <input
+                      required
                       type="datetime-local"
                       name="eventDate"
                       id="eventDate"
@@ -104,6 +107,7 @@ export default function EventForm() {
                       Location*
                     </label>
                     <input
+                      required 
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       type="text"
                       name="eventLocation"
@@ -138,6 +142,7 @@ export default function EventForm() {
                       Organiser*
                     </label>
                     <input
+                      required
                       type="text"
                       name="eventOrganiser"
                       id="eventOrganiser"
@@ -222,7 +227,7 @@ export default function EventForm() {
                 </div>
           
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Cover photo</label>
+                  <label className="block text-sm font-medium text-gray-700">Cover photo*</label>
                   <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                     <div className="space-y-1 text-center">
                       {/* Image */}
@@ -247,6 +252,7 @@ export default function EventForm() {
                           className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                         >
                           <input 
+                            required
                             id="eventImage"   
                             name="eventImage" 
                             type="file" 

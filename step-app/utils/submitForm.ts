@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { getSession } from "next-auth/react"
 import { tagsToArray } from "../utils/tagsToArray"
 import useInput from "../hooks/useInput";
+import addressToCoordinates from '../utils/geocode'
 
 interface CurrentUser {
   name: string;
@@ -39,17 +40,21 @@ export default async function handleSubmit(e: any) {
   const imageName = e.target.eventImage.title;
   const imageURL = BUCKET_URL + imageName;
 
+  // Get coordinates from address and parse into right form.
+  const address: string = e.target.eventLocation.value
+  const addressCoordinates = await addressToCoordinates(address)
+  const eventLocationArray = [address, addressCoordinates]
+
   // Get data from the form.
   // No _id field. MongoDB makes one automatically?
   // The location field does not work yet?
   const data = {
     eventName: e.target.eventName.value,
     eventDate: e.target.eventDate.value,
-    eventLocation: e.target.eventLocation.value,
+    eventLocation: eventLocationArray,
     eventDescription: e.target.eventDescription.value,
     eventImage: imageURL,
     eventOrganiser: e.target.eventOrganiser.value,
-    //   eventTags: e.target.eventTags.value,
     eventTags: formattedTags,
     eventPrivacy: e.target.eventPrivacy.checked,
     eventAdmission: +e.target.eventAdmission.value,

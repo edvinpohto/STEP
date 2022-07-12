@@ -96,7 +96,7 @@ export default function NavbarSignedIn() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/user"
+                            href="/yourEvents"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your events
@@ -106,7 +106,7 @@ export default function NavbarSignedIn() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/likedEvents"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Liked events
