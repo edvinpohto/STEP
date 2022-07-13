@@ -1,0 +1,17 @@
+/* Idea to override the basic popup from here https://docs.mapbox.com/help/tutorials/building-a-store-locator/ */
+
+.mapboxgl-popup-close-button {
+  width: 20px;
+}
+
+.mapboxgl-popup-content {
+  width: 300px;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.mapboxgl-popup-tip {
+  display: none;
+}
+
