@@ -103,26 +103,3 @@ export async function getServerSideProps(context: GetServerSideProps) {
 }
 
 export default Home
-
-
-{/* <div> */}
-  {/* Real src needs to be a submitted image address */}
-  {/* <img src="https://source.unsplash.com/random/400x100" alt="image" className='rounded-t-md' width={400} height={100} />
-</div>
-
-<LikeButtonSignedIn /> */}
-
-{/* <div className='p-2.5'>
-  <p className='text-lg'>{property.eventName}</p>
-  <p className='text-sm'>Date: {property.eventDate}</p>
-  <p className='text-sm'>Location: </p>
-  <p className='text-sm'>Organised by {property.eventOrganiser}</p> */}
-  {/* THE BELOW COMMENTED OUT SECTIONS NEED TO BE DISPLAYED ON THE EVENT PAGE INSTEAD */}
-  {/* <div className='text-sm'>
-    <p>Description: {property.eventDescription}</p> 
-  </div> */}
-  {/* <p>Tags: {property.eventTags}</p> */}
-  {/* <p>Admission: £{property.eventAdmission}</p> */}
-  {/* <p>Duration: {property.eventDuration}h</p> */}
-  {/* <p>Private: {property.eventPrivacy}</p> */}
-{/* </div> */}
