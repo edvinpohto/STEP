@@ -17,13 +17,16 @@ interface CurrentUser {
 
 const YourEvents: NextPage = () => {
   const { data: session, status } = useSession();
+  const userID = session?.user.id
+
+  console.log(userID)
 
 	const [data, setData] = useState<any[]>([])
   const [isLoading, setLoading] = useState(false)
 
 	useEffect(() => {
     setLoading(true)
-    fetch('/api/yourEvents')
+    fetch(`/api/events/${userID}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data.events)

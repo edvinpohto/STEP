@@ -6,10 +6,8 @@ import formatLocation from '../utils/formatLocation';
 export default function EventCardSignedOut(property: Card) {
 	// Parse date & time into desired form
 	let formattedDateAndTime: string = formatDateAndTime(property.eventDate)
-	// Parse location into desired form
-	let formattedLocation: string = formatLocation(property.eventLocation)
-	
-	console.log(property.eventImage)
+	// Parse location into desired form for card
+	let formattedLocation: string = formatLocation(property.eventLocation[0])
 
 	return(
 		<div className="grid m-3 sm:w-96">
