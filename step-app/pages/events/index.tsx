@@ -1,15 +1,14 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import { getSession, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
+import clientPromise from '../../lib/mongodb'
 import Head from 'next/head'
-import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
-import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import YourEventCards from '../components/EventCards/YourEventCards'
-import { Event } from '../types/models'
-import clientPromise from '../lib/mongodb'
-import PleaseSignIn from '../components/PleaseSignIn'
-import Intro from '../components/YourEventsIntro'
+import NavbarSignedIn from '../../components/Navbars/NavbarSignedIn'
+import NavbarSignedOut from '../../components/Navbars/NavbarSignedOut'
+import EventCardSignedIn from '../../components/EventCards/EventCardSignedIn'
+import EventCardSignedOut from '../../components/EventCards/EventCardSignedOut'
+import { Event } from '../../types/models'
 
-const YourEvents: NextPage = ({ properties }: any) => {
+const Home: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
   
   if (status === 'loading') {
@@ -33,14 +32,13 @@ const YourEvents: NextPage = ({ properties }: any) => {
         </Head>
   
         <NavbarSignedIn />
-        <Intro />
   
         <div className='grid p-3 sm:justify-center'>
             {properties && properties.map((property: Event) => (
             <div 
             key={property._id} 
             className='w-full'>
-              <YourEventCards 
+              <EventCardSignedIn 
               eventName={property.eventName}
               eventDate={property.eventDate}
               eventImage={property.eventImage}
@@ -50,26 +48,46 @@ const YourEvents: NextPage = ({ properties }: any) => {
             </div>
           ))}
         </div>
+
+        {/* <NavbarBottom /> */}
       </div>
     )
   }
 
   return (
-    <>
+    <div>
+      <Head>
+        <title>St Andrews Events Platform</title>
+        <meta name="keywords" content="STEP, St Andrews, Events" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+  
       <NavbarSignedOut />
-      <PleaseSignIn />
-    </>
+  
+      <div className='grid p-3 sm:justify-center'>
+        {properties && properties.map((property: Event) => (
+          <div 
+          key={property._id} 
+          className='w-full'>
+            <EventCardSignedOut 
+            eventName={property.eventName}
+            eventDate={property.eventDate}
+            eventImage={property.eventImage}
+            eventOrganiser={property.eventOrganiser}
+            eventLocation={property.eventLocation}
+            eventAdmission={property.eventAdmission}/>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
-export async function getServerSideProps(context: GetServerSideProps | any) {
-  const session = await getSession(context) //pass context to authenticate create session
-  const userID = session?.user.id //get id from session
-
+export async function getServerSideProps(context: GetServerSideProps) {
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({ "currentUser.id": `${userID}` }).toArray();
+    const events = await db.collection("events").find({}).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {
@@ -82,4 +100,4 @@ export async function getServerSideProps(context: GetServerSideProps | any) {
   }
 }
 
-export default YourEvents
+export default Home

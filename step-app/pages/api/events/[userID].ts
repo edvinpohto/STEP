@@ -1,3 +1,5 @@
+// THIS PAGE IS NOT USED ANYMORE
+
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../../lib/mongodb";
 import { useRouter } from 'next/router'

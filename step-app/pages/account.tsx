@@ -1,20 +1,12 @@
-import type { GetServerSideProps, NextPage } from 'next'
+import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
-import clientPromise from '../lib/mongodb'
 import Head from 'next/head'
 import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import NavbarBottom from '../components/Navbars/NavbarBottom'
-import { Event } from '../types/models'
-// import Map from '../components/Map'
+import Account from '../components/Account'
+import PleaseSignIn from '../components/PleaseSignIn'
 
-import dynamic from 'next/dynamic';
-const Map = dynamic(() => import('../components/Map'), {
-  ssr: false
-});
-
-
-const MapPage: NextPage = () => {
+const AccountPage: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
   
   if (status === 'loading') {
@@ -38,24 +30,17 @@ const MapPage: NextPage = () => {
         </Head>
   
         <NavbarSignedIn />
-        <Map />
-
+        <Account />
       </div>
     )
   }
 
   return (
-    <div>
-      <Head>
-        <title>St Andrews Events Platform</title>
-        <meta name="keywords" content="STEP, St Andrews, Events" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-  
+    <>
       <NavbarSignedOut />
-      <Map />
-    </div>
+      <PleaseSignIn />
+    </>
   )
 }
 
-export default MapPage
+export default AccountPage

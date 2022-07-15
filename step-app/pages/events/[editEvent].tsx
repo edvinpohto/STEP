@@ -1,8 +1,8 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 
-export default function Component() {
+export default function EditEvent() {
   
     return(
-        <h1>Event</h1>
+        <h1>Edit</h1>
     )
 }

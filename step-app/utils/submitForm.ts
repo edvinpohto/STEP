@@ -11,14 +11,6 @@ interface CurrentUser {
 	id: string;
 }
 
-interface Result {
-  center: number[];
-  place_name: string;
-  place_type: string[];
-  relevance: number;
-  text: string;
-}
-
 const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/"
 
 // Handles the submit event on form submit.
@@ -59,6 +51,7 @@ export default async function handleSubmit(e: any) {
     eventPrivacy: e.target.eventPrivacy.checked,
     eventAdmission: +e.target.eventAdmission.value,
     eventDuration: +e.target.eventDuration.value,
+    eventLikes: [],
     currentUser: userData
   }
 

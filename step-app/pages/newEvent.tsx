@@ -3,8 +3,8 @@ import type { GetServerSideProps, NextPage } from 'next'
 import { NextResponse } from "next/server";
 import Head from 'next/head'
 import PleaseSignIn from "../components/PleaseSignIn";
-import NavbarSignedIn from "../components/NavbarSignedIn";
-import NavbarSignedOut from "../components/NavbarSignedOut";
+import NavbarSignedIn from "../components/Navbars/NavbarSignedIn";
+import NavbarSignedOut from "../components/Navbars/NavbarSignedOut";
 import EventForm from "../components/EventForm";
 
 const NewEvent: NextPage = () => {

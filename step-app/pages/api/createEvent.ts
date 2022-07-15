@@ -33,6 +33,7 @@ export default async function handler(
 		Event admission: ${body.eventAdmission} 
 		Event duration: ${body.eventDuration}
 		Event image: ${body.eventImage}
+		Event likes: ${body.eventLikes}
 		Submission by user: ${body.currentUser.name}
 		User's id: ${body.currentUser.id}` 
 	})

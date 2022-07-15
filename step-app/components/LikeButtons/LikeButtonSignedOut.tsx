@@ -1,4 +1,4 @@
-import signInRedirect from "../utils/signInRedirect"
+import signInRedirect from "../../utils/signInRedirect"
 
 export default function LikeButtonSignedOut() {
   return(

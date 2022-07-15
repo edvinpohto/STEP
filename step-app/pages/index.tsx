@@ -2,11 +2,11 @@ import type { GetServerSideProps, NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import clientPromise from '../lib/mongodb'
 import Head from 'next/head'
-import NavbarSignedIn from '../components/NavbarSignedIn'
-import NavbarSignedOut from '../components/NavbarSignedOut'
-import NavbarBottom from '../components/NavbarBottom'
-import EventCardSignedIn from '../components/EventCardSignedIn'
-import EventCardSignedOut from '../components/EventCardSignedOut'
+import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
+import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
+import NavbarBottom from '../components/Navbars/NavbarBottom'
+import EventCardSignedIn from '../components/EventCards/EventCardSignedIn'
+import EventCardSignedOut from '../components/EventCards/EventCardSignedOut'
 import { Event } from '../types/models'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 
@@ -46,7 +46,9 @@ const Home: NextPage = ({ properties }: any) => {
               eventImage={property.eventImage}
               eventOrganiser={property.eventOrganiser}
               eventLocation={property.eventLocation}
-              eventAdmission={property.eventAdmission}/>
+              eventAdmission={property.eventAdmission}
+              eventLikes={property.eventLikes}
+              currentUser={session.user.id}/>
             </div>
           ))}
         </div>
@@ -72,12 +74,14 @@ const Home: NextPage = ({ properties }: any) => {
           key={property._id} 
           className='w-full'>
             <EventCardSignedOut 
-            eventName={property.eventName}
-            eventDate={property.eventDate}
-            eventImage={property.eventImage}
-            eventOrganiser={property.eventOrganiser}
-            eventLocation={property.eventLocation}
-            eventAdmission={property.eventAdmission}/>
+              eventName={property.eventName}
+              eventDate={property.eventDate}
+              eventImage={property.eventImage}
+              eventOrganiser={property.eventOrganiser}
+              eventLocation={property.eventLocation}
+              eventAdmission={property.eventAdmission}
+              eventLikes={property.eventLikes} 
+              currentUser={''}/>
           </div>
         ))}
       </div>

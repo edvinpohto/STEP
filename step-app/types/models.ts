@@ -10,6 +10,7 @@ export interface Event {
     eventPrivacy: boolean,
     eventAdmission: number,
     eventDuration: number,
+    eventLikes: string[],
 }
 
 export interface Card {
@@ -19,6 +20,8 @@ export interface Card {
     eventOrganiser: string,
     eventAdmission: number,
     eventImage: string,
+    eventLikes: string[],
+    currentUser: string,
 }
 
 export interface Session {
