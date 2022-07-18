@@ -34,13 +34,15 @@ export default function NavbarSignedIn() {
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex-shrink-0 flex items-center">
-                  <Image 
-                  src="/whitelogo.png" 
-                  alt="STEP" 
-                  width="70" 
-                  height="40" />
-                </div>
+                <a href="/">
+                  <div className="flex-shrink-0 flex items-center">
+                    <Image 
+                    src="/whitelogo.png" 
+                    alt="STEP" 
+                    width="70" 
+                    height="40" />
+                  </div>
+                </a>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (

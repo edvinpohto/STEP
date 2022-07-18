@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "cypress": "cypress open",
     "lint": "next lint"
   },
   "dependencies": {
@@ -31,12 +32,15 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
+    "@types/jest": "^28.1.6",
     "@types/mapbox__mapbox-gl-geocoder": "^4.7.2",
+    "@types/mocha": "^9.1.1",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
     "@types/react-geocode": "^0.2.1",
     "autoprefixer": "^10.4.7",
+    "cypress": "^10.3.0",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
     "postcss": "^8.4.14",

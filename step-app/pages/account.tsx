@@ -6,7 +6,7 @@ import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
 import Account from '../components/Account'
 import PleaseSignIn from '../components/PleaseSignIn'
 
-const AccountPage: NextPage = ({ properties }: any) => {
+const AccountPage: NextPage = () => {
   const { data: session, status } = useSession();
   
   if (status === 'loading') {
