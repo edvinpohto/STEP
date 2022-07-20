@@ -44,7 +44,9 @@ const Home: NextPage = ({ properties }: any) => {
               eventImage={property.eventImage}
               eventOrganiser={property.eventOrganiser}
               eventLocation={property.eventLocation}
-              eventAdmission={property.eventAdmission}/>
+              eventAdmission={property.eventAdmission}
+              eventLikes={property.eventLikes}
+              currentUser={session.user.id}/>
             </div>
           ))}
         </div>
@@ -75,7 +77,9 @@ const Home: NextPage = ({ properties }: any) => {
             eventImage={property.eventImage}
             eventOrganiser={property.eventOrganiser}
             eventLocation={property.eventLocation}
-            eventAdmission={property.eventAdmission}/>
+            eventAdmission={property.eventAdmission}
+            eventLikes={property.eventLikes}
+            currentUser={''}/>
           </div>
         ))}
       </div>

@@ -1,5 +1,7 @@
 import { defineConfig } from "cypress";
 
+const {GoogleSocialLogin} = require('cypress-social-logins').plugins
+
 export default defineConfig({
   env: {
     googleRefreshToken: process.env.GOOGLE_REFRESH_TOKEN,
@@ -9,9 +11,17 @@ export default defineConfig({
 
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on('task', {
+        log(message) {
+          console.log(message)
+      
+          return null
+        },
+        GoogleSocialLogin: GoogleSocialLogin,
+      })
     },
     baseUrl: "http://localhost:3000",
+    "chromeWebSecurity": false,
   },
 
   component: {

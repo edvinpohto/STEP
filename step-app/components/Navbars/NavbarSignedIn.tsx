@@ -1,9 +1,13 @@
 // Component from https://tailwindui.com/components/application-ui/navigation/navbars
+// Search bar from https://headlessui.com/react/dialog
+// Search box from https://flowbite.com/docs/forms/search-input/ 
 
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Fragment, useState } from 'react'
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
+import signOutRedirect from '../../utils/signOutRedirect'
+import handleSearch from '../../utils/submitSearch'
 
 const navigation = [
   { name: 'Feed', href: '/', current: true },
@@ -16,14 +20,25 @@ function classNames(...classes: any) {
 }
 
 export default function NavbarSignedIn() {
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
   return (
     <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10 drop-shadow-lg">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
+              
+              {/* Mobile menu button*/}
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -33,6 +48,7 @@ export default function NavbarSignedIn() {
                   )}
                 </Disclosure.Button>
               </div>
+
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <a href="/">
                   <div className="flex-shrink-0 flex items-center">
@@ -61,14 +77,83 @@ export default function NavbarSignedIn() {
                   </div>
                 </div>
               </div>
+
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">Search events</span>
-                  <SearchIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+
+                {/* Search bar */}
+                <div>
+                  <button
+                    type="button"
+                    onClick={openModal}
+                    className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  >
+                    <span className="sr-only">Search events</span>
+                    <SearchIcon className="h-6 w-6" aria-hidden="true" />
+                  </button>
+
+                  <Transition appear show={isOpen} as={Fragment}>
+                    <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                      <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                      >
+                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                      </Transition.Child>
+
+                      <div className="fixed inset-0 overflow-y-auto">
+                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                          <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0 scale-95"
+                            enterTo="opacity-100 scale-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100 scale-100"
+                            leaveTo="opacity-0 scale-95"
+                          >
+                            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all">
+                              <Dialog.Title
+                                as="h3"
+                                className="text-lg font-medium leading-6 text-gray-900"
+                              >
+                                Search for events
+                              </Dialog.Title>
+
+                              <div className="mt-2">
+                                <form onSubmit={handleSearch}>   
+                                  <label htmlFor="event-search" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                                  <div className="relative">
+                                      <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                          <svg aria-hidden="true" className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                      </div>
+                                      <input type="search" id="event-search" className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-gray-800 focus:border-gray-800" placeholder="Search events..." required/>
+                                      <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2">Search</button>
+                                  </div>
+                                </form>
+                              </div>
+
+                              {/* <div className="mt-4">
+                                <button
+                                  type="button"
+                                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                  onClick={closeModal}
+                                >
+                                  Close search
+                                </button>
+                              </div>  */}
+
+                            </Dialog.Panel>
+                          </Transition.Child>
+                        </div>
+                      </div>
+                    </Dialog>
+                  </Transition>
+                </div>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
@@ -138,6 +223,16 @@ export default function NavbarSignedIn() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
+                          <button
+                            onClick={() => signOutRedirect({ callbackUrl: '/'})}
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            Sign out
+                          </button>
+                        )}
+                      </Menu.Item>
+                      {/* <Menu.Item>
+                        {({ active }) => (
                           <a
                             href="/api/auth/signout"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
@@ -145,7 +240,7 @@ export default function NavbarSignedIn() {
                             Sign out
                           </a>
                         )}
-                      </Menu.Item>
+                      </Menu.Item> */}
                     </Menu.Items>
                   </Transition>
                 </Menu>
