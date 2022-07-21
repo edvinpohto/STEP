@@ -1,21 +1,22 @@
 import type { GetServerSideProps, NextPage } from 'next'
-import { useSession } from "next-auth/react"
-import clientPromise from '../lib/mongodb'
+import { getSession, useSession } from "next-auth/react"
 import Head from 'next/head'
 import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
+import { Event } from '../types/models'
+import clientPromise from '../lib/mongodb'
 import EventCardSignedIn from '../components/EventCards/EventCardSignedIn'
 import EventCardSignedOut from '../components/EventCards/EventCardSignedOut'
-import { Event } from '../types/models'
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
+import SearchBar from '../components/SearchBar'
 
-const Home: NextPage = ({ properties }: any) => {
+const YourEvents: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
   
   if (status === 'loading') {
     return (
       <>
         <NavbarSignedIn />
+        <SearchBar />
         <div className='grid grid-cols-1 place-content-center place-items-center p-5'>
           <h1>Loading...</h1>
         </div>
@@ -33,8 +34,13 @@ const Home: NextPage = ({ properties }: any) => {
         </Head>
   
         <NavbarSignedIn />
+        <SearchBar />
+
+        <div className='grid place-content-center'>
+          <p className='p-3'>Here we need to generate the search results</p>
+        </div>
   
-        <div className='grid p-3 sm:justify-center'>
+        {/* <div className='grid p-3 sm:justify-center'>
             {properties && properties.map((property: Event) => (
             <div 
             key={property._id} 
@@ -50,9 +56,7 @@ const Home: NextPage = ({ properties }: any) => {
               currentUser={session.user.id}/>
             </div>
           ))}
-        </div>
-
-        {/* <NavbarBottom /> */}
+        </div> */}
       </div>
     )
   }
@@ -66,8 +70,9 @@ const Home: NextPage = ({ properties }: any) => {
       </Head>
   
       <NavbarSignedOut />
+      <SearchBar />
   
-      <div className='grid p-3 sm:justify-center'>
+      {/* <div className='grid p-3 sm:justify-center'>
         {properties && properties.map((property: Event) => (
           <div 
           key={property._id} 
@@ -83,26 +88,29 @@ const Home: NextPage = ({ properties }: any) => {
               currentUser={''}/>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   )
 }
 
-export async function getServerSideProps(context: GetServerSideProps) {
-  try {
-    const client = await clientPromise
-    const db = client.db("step")
-    const events = await db.collection("events").find({}).toArray();
-    const properties = JSON.parse(JSON.stringify(events));
+// export async function getServerSideProps(context: GetServerSideProps | any) {
+//   const session = await getSession(context) //pass context to authenticate create session
+//   const userID = session?.user.id //get id from session
 
-    return {
-      props: { 
-        properties: properties,
-      },
-    }
-  } catch (e) {
-    console.error(e)
-  }
-}
+//   try {
+//     const client = await clientPromise
+//     const db = client.db("step")
+//     const events = await db.collection("events").find({ "currentUser.id": `${userID}` }).toArray();
+//     const properties = JSON.parse(JSON.stringify(events));
 
-export default Home
+//     return {
+//       props: { 
+//         properties: properties,
+//       },
+//     }
+//   } catch (e) {
+//     console.error(e)
+//   }
+// }
+
+export default YourEvents

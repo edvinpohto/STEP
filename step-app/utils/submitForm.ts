@@ -77,7 +77,7 @@ export default async function handleSubmit(e: any) {
   const response = await fetch(endpoint, options)
 
   // Get the response data from server as JSON.
-  // If server returns the name submitted, that means the form works.
+  // If server returns the what was submitted, that means the form works.
   const result = await response.json()
   console.log(`The server has received ${result.data}`)
 }
