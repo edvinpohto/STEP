@@ -1,12 +1,12 @@
 import useFetch from "../hooks/useFetch";
-import EventCardSignedIn from "./EventCards/EventCardSignedIn";
+import EventCardSearched from "./EventCards/EventCardSearched";
 
 export default function SearchBar() {
 	const { data, setData } = useFetch();
-	console.log(data.results)
+	console.log(data)
 	
 	return (
-		<div className="m-2">
+		<div className="mt-2">
 		{/* <form>    */}
 			<label htmlFor="eventSearch" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
 			<div className="relative">
@@ -26,22 +26,22 @@ export default function SearchBar() {
 		{/* </form> */}
 		{data.results.events.length > 0 
 			? 
-			<div className='grid p-3 sm:justify-center'>
-				{/* {data && data.map((data: any) => ( */}
+			<div className='grid sm:justify-center'>
+				{data.results.events && data.results.events.map((data: any) => (
 					<div 
-					key={data.results.events[0]._id} 
+					key={data._id} 
 					className='w-full'>
-						<EventCardSignedIn 
-							eventName={data.results.events[0].eventName}
-							eventDate={data.results.events[0].eventDate}
-							eventImage={data.results.events[0].eventImage}
-							eventOrganiser={data.results.events[0].eventOrganiser}
-							eventLocation={data.results.events[0].eventLocation}
-							eventAdmission={data.results.events[0].eventAdmission}
-							eventLikes={data.results.events[0].eventLikes} 
+						<EventCardSearched 
+							eventName={data.eventName}
+							eventDate={data.eventDate}
+							eventImage={data.eventImage}
+							eventOrganiser={data.eventOrganiser}
+							eventLocation={data.eventLocation}
+							eventAdmission={data.eventAdmission}
+							eventLikes={data.eventLikes} 
 							currentUser={''}/>
 					</div>
-				{/* ))} */}
+				))}
 			</div>
 			: 
 			<div className=''>

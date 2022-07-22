@@ -6,6 +6,7 @@ import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import signInRedirect from '../../utils/signInRedirect'
 import SearchBar from '../SearchBar'
+import SearchModal from '../SearchModal'
 
 const navigation = [
   { name: 'Feed', href: '/', current: true },
@@ -18,16 +19,6 @@ function classNames(...classes: any) {
 }
 
 export default function NavbarSignedOut() {
-  let [isOpen, setIsOpen] = useState(false)
-
-  function closeModal() {
-    setIsOpen(false)
-  }
-
-  function openModal() {
-    setIsOpen(true)
-  }
-
   return (
     <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10 drop-shadow-lg">
         {({ open }) => (
@@ -76,69 +67,8 @@ export default function NavbarSignedOut() {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  {/* Search bar */}
-                  <div>
-                    <button
-                      type="button"
-                      onClick={openModal}
-                      className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                    >
-                      <span className="sr-only">Search events</span>
-                      <SearchIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
 
-                    <Transition appear show={isOpen} as={Fragment}>
-                      <Dialog as="div" className="relative z-10" onClose={closeModal}>
-                        <Transition.Child
-                          as={Fragment}
-                          enter="ease-out duration-300"
-                          enterFrom="opacity-0"
-                          enterTo="opacity-100"
-                          leave="ease-in duration-200"
-                          leaveFrom="opacity-100"
-                          leaveTo="opacity-0"
-                        >
-                          <div className="fixed inset-0 bg-black bg-opacity-25" />
-                        </Transition.Child>
-
-                        <div className="fixed inset-0 overflow-y-auto">
-                          <div className="flex min-h-full items-center justify-center p-4 text-center">
-                            <Transition.Child
-                              as={Fragment}
-                              enter="ease-out duration-300"
-                              enterFrom="opacity-0 scale-95"
-                              enterTo="opacity-100 scale-100"
-                              leave="ease-in duration-200"
-                              leaveFrom="opacity-100 scale-100"
-                              leaveTo="opacity-0 scale-95"
-                            >
-                              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-white p-6 text-left align-middle shadow-xl transition-all">
-                                <Dialog.Title
-                                  as="h3"
-                                  className="text-lg font-medium leading-6 text-gray-900"
-                                >
-                                  Search for events
-                                </Dialog.Title>
-
-                                <SearchBar />
-
-                                <div className="mt-4">
-                                  <button
-                                    type="button"
-                                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                                    onClick={closeModal}
-                                  >
-                                    Close search
-                                  </button>
-                                </div> 
-
-                              </Dialog.Panel>
-                            </Transition.Child>
-                          </div>
-                        </div>
-                      </Dialog>
-                    </Transition>
-                  </div>
+                  <SearchModal />
                   
                   {/* Profile dropdown */}
                   <Menu as="div" className="ml-3 relative">
