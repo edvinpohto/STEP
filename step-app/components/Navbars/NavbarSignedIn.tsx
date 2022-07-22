@@ -7,8 +7,7 @@ import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import signOutRedirect from '../../utils/signOutRedirect'
-import handleSearch from '../../utils/submitSearch'
-import Link from 'next/link'
+import SearchBar from '../SearchBar'
 
 const navigation = [
   { name: 'Feed', href: '/', current: true },
@@ -21,15 +20,15 @@ function classNames(...classes: any) {
 }
 
 export default function NavbarSignedIn() {
-  // let [isOpen, setIsOpen] = useState(false)
+  let [isOpen, setIsOpen] = useState(false)
 
-  // function closeModal() {
-  //   setIsOpen(false)
-  // }
+  function closeModal() {
+    setIsOpen(false)
+  }
 
-  // function openModal() {
-  //   setIsOpen(true)
-  // }
+  function openModal() {
+    setIsOpen(true)
+  }
 
   return (
     <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10 drop-shadow-lg">
@@ -82,7 +81,8 @@ export default function NavbarSignedIn() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                 {/* Search bar */}
-                <Link href='/searchPage'>
+
+                {/* <Link href='/searchPage'>
                   <button
                     type="button"
                     // onClick={}
@@ -91,8 +91,9 @@ export default function NavbarSignedIn() {
                     <span className="sr-only">Search events</span>
                     <SearchIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
-                </Link>
-                {/* <div>
+                </Link> */}
+
+                <div>
                   <button
                     type="button"
                     onClick={openModal}
@@ -113,7 +114,7 @@ export default function NavbarSignedIn() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                       >
-                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                        <div className="fixed inset-0 bg-black bg-opacity-50" />
                       </Transition.Child>
 
                       <div className="fixed inset-0 overflow-y-auto">
@@ -135,8 +136,8 @@ export default function NavbarSignedIn() {
                                 Search for events
                               </Dialog.Title>
 
-                              <div className="mt-2">
-                                <form onSubmit={handleSearch}>   
+                              {/* <div className="mt-2">
+                                <form>   
                                   <label htmlFor="eventSearch" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
                                   <div className="relative">
                                       <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -146,7 +147,9 @@ export default function NavbarSignedIn() {
                                       <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2">Search</button>
                                   </div>
                                 </form>
-                              </div>
+                              </div> */}
+
+                              <SearchBar />
 
                               <div className="mt-4">
                                 <button
@@ -164,7 +167,7 @@ export default function NavbarSignedIn() {
                       </div>
                     </Dialog>
                   </Transition>
-                </div> */}
+                </div>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
