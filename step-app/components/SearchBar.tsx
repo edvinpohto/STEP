@@ -24,30 +24,32 @@ export default function SearchBar() {
 					{/* <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-4 py-2">Search</button> */}
 			</div>
 		{/* </form> */}
-		{data.results.events.length > 0 
-			? 
-			<div className='grid sm:justify-center'>
-				{data.results.events && data.results.events.map((data: any) => (
-					<div 
-					key={data._id} 
-					className='w-full'>
-						<EventCardSearched 
-							eventName={data.eventName}
-							eventDate={data.eventDate}
-							eventImage={data.eventImage}
-							eventOrganiser={data.eventOrganiser}
-							eventLocation={data.eventLocation}
-							eventAdmission={data.eventAdmission}
-							eventLikes={data.eventLikes} 
-							currentUser={''}/>
-					</div>
-				))}
-			</div>
-			: 
-			<div className=''>
-				<p className='pt-2 text-sm'>Search for an event to update the list</p>
-			</div>
-			}
+		<div className="">
+			{data.results.events.length > 0 
+				? 
+				<div className='grid sm:justify-center'>
+					{data.results.events && data.results.events.map((data: any) => (
+						<div 
+						key={data._id} 
+						className='w-full'>
+							<EventCardSearched 
+								eventName={data.eventName}
+								eventDate={data.eventDate}
+								eventImage={data.eventImage}
+								eventOrganiser={data.eventOrganiser}
+								eventLocation={data.eventLocation}
+								eventAdmission={data.eventAdmission}
+								eventLikes={data.eventLikes} 
+								currentUser={''}/>
+						</div>
+					))}
+				</div>
+				: 
+				<div className=''>
+					<p className='pt-2 text-sm'>Search for an event to update the list</p>
+				</div>
+				}
+		</div>
 	</div>
 	)
 }

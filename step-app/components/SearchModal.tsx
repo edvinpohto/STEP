@@ -1,3 +1,7 @@
+// Component from https://tailwindui.com/components/application-ui/navigation/navbars
+// Search bar from https://headlessui.com/react/dialog
+// Search box from https://flowbite.com/docs/forms/search-input/ 
+
 import { Dialog, Transition } from "@headlessui/react"
 import { SearchIcon } from "@heroicons/react/outline"
 import { Fragment, useState } from "react"
@@ -52,8 +56,18 @@ export default function SearchModal() {
             <div className="fixed inset-0 bg-black bg-opacity-50" />
           </Transition.Child>
 
-          <div className="fixed h-full border-2 border-red-600 inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-top justify-center p-5 pt-16 pb-16 text-center">
+          <div className="fixed bottom-20 right-10 mt-4 z-20">
+            <button
+              type="button"
+              className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              onClick={closeModal}
+            >
+              Close search
+            </button>
+          </div> 
+
+          <div className="fixed grid content-center h-full inset-0">
+            <div className="fixed w-full h-full items-top justify-center p-5 pt-16 pb-16 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -63,7 +77,7 @@ export default function SearchModal() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-white p-4 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="h-full w-full max-w-md overflow-y-auto transform rounded-md bg-white p-4 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
@@ -83,18 +97,11 @@ export default function SearchModal() {
                       </div>
                     </form>
                   </div> */}
+                  
+                  <div className="">
+                    <SearchBar />
+                  </div>
 
-                  <SearchBar />
-
-                  <div className="absolute bottom-4 right-4 mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Close search
-                    </button>
-                  </div> 
 
                 </Dialog.Panel>
               </Transition.Child>
