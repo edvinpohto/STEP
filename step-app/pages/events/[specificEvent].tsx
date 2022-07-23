@@ -43,14 +43,18 @@ const SpecificEvent: NextPage = ({ properties }: any) => {
 
         <EventPage 
           eventId={properties[0]._id}
+          _id={properties[0]._id} 
+          eventDescription={properties[0].eventDescription}
           eventName={properties[0].eventName}
           eventDate={properties[0].eventDate}
           eventImage={properties[0].eventImage}
           eventOrganiser={properties[0].eventOrganiser}
           eventLocation={properties[0].eventLocation}
           eventAdmission={properties[0].eventAdmission}
+          eventPrivacy={properties[0].eventPrivacy}
           eventLikes={properties[0].eventLikes}
-          currentUser={session.user.id}/>
+          eventTags={properties[0].eventTags} 
+          eventDuration={properties[0].eventDuration}/>
 
       </div>
     )

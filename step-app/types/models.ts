@@ -1,5 +1,6 @@
 export interface Event {
     _id: string;
+    eventId: string;
     eventName: string,
     eventDate: string,
     eventLocation: any,
