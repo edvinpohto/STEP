@@ -40,14 +40,15 @@ const Home: NextPage = ({ properties }: any) => {
             key={property._id} 
             className='w-full'>
               <EventCardSignedIn 
-              eventName={property.eventName}
-              eventDate={property.eventDate}
-              eventImage={property.eventImage}
-              eventOrganiser={property.eventOrganiser}
-              eventLocation={property.eventLocation}
-              eventAdmission={property.eventAdmission}
-              eventLikes={property.eventLikes}
-              currentUser={session.user.id}/>
+                eventName={property.eventName}
+                eventDate={property.eventDate}
+                eventImage={property.eventImage}
+                eventOrganiser={property.eventOrganiser}
+                eventLocation={property.eventLocation}
+                eventAdmission={property.eventAdmission}
+                eventLikes={property.eventLikes}
+                currentUser={session.user.id} 
+                eventId={property._id}/>
             </div>
           ))}
         </div>
@@ -80,7 +81,8 @@ const Home: NextPage = ({ properties }: any) => {
               eventLocation={property.eventLocation}
               eventAdmission={property.eventAdmission}
               eventLikes={property.eventLikes} 
-              currentUser={''}/>
+              currentUser={''}
+              eventId={property._id}/>
           </div>
         ))}
       </div>

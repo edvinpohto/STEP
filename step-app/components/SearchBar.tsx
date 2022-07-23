@@ -39,8 +39,9 @@ export default function SearchBar() {
 								eventOrganiser={data.eventOrganiser}
 								eventLocation={data.eventLocation}
 								eventAdmission={data.eventAdmission}
-								eventLikes={data.eventLikes} 
-								currentUser={''}/>
+								eventLikes={data.eventLikes}
+								currentUser={''} 
+								eventId={""}/>
 						</div>
 					))}
 				</div>

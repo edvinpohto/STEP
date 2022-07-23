@@ -2,6 +2,7 @@ import { Card } from '../../types/models'
 import signInRedirect from "../../utils/signInRedirect"
 import formatDateAndTime from "../../utils/formatDateAndTime";
 import formatLocation from '../../utils/formatLocation';
+import Link from 'next/link';
 
 export default function EventCardSignedOut(property: Card) {
 	// Parse date & time into desired form
@@ -33,17 +34,21 @@ export default function EventCardSignedOut(property: Card) {
         		</div>
       		</div>
 					{/* Text */}
-					<div className="block pt-2">
-						{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
-						<span className="text-slate-500 text-xs">{formattedDateAndTime}</span>
-					</div>
-					<span className="block mt-2 text-sm mr-4">{property.eventName}</span>
-					<span className="block text-xs">Organiser: {property.eventOrganiser}</span>
-					<div className="absolute bottom-2 opacity-100 pr-1 w-full text-xs">
-						{/* <span className="inline-block">{property.eventLocation}</span> */}
-						<span className="inline-block">{formattedLocation}</span>
-						<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
-					</div>
+					<Link href={`/events/${property.eventId}`}>
+						<div>
+							<div className="block pt-2">
+								{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
+								<span className="text-slate-500 text-xs">{formattedDateAndTime}</span>
+							</div>
+							<span className="block mt-2 text-sm mr-4">{property.eventName}</span>
+							<span className="block text-xs">Organiser: {property.eventOrganiser}</span>
+							<div className="absolute bottom-2 opacity-100 pr-1 w-full text-xs">
+								{/* <span className="inline-block">{property.eventLocation}</span> */}
+								<span className="inline-block">{formattedLocation}</span>
+								<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
+							</div>
+						</div>
+					</Link>
 				</div>
 			</div>
 		</div>

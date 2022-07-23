@@ -4,7 +4,6 @@ import clientPromise from '../lib/mongodb'
 import Head from 'next/head'
 import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import NavbarBottom from '../components/Navbars/NavbarBottom'
 import { Event } from '../types/models'
 // import Map from '../components/Map'
 

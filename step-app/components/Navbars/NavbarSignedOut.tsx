@@ -10,8 +10,8 @@ import SearchModal from '../SearchModal'
 
 const navigation = [
   { name: 'Feed', href: '/', current: true },
-  { name: 'Map', href: 'map', current: false },
-  { name: 'About', href: 'about', current: false },
+  { name: 'Map', href: '/map', current: false },
+  { name: 'About', href: '/about', current: false },
 ]
 
 function classNames(...classes: any) {

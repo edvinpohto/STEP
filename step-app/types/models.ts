@@ -14,6 +14,7 @@ export interface Event {
 }
 
 export interface Card {
+    eventId: string;
     eventName: string,
     eventDate: string,
     eventLocation: string,

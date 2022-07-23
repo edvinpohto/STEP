@@ -5,8 +5,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  
   const { searchAPI } = req.query
   console.log(searchAPI)
+
   const client = await clientPromise
   const db = client.db("step")
 

@@ -41,14 +41,15 @@ const YourEvents: NextPage = ({ properties }: any) => {
             key={property._id} 
             className='w-full'>
               <YourEventCards 
-              eventName={property.eventName}
-              eventDate={property.eventDate}
-              eventImage={property.eventImage}
-              eventOrganiser={property.eventOrganiser}
-              eventLocation={property.eventLocation}
-              eventAdmission={property.eventAdmission}
-              eventLikes={property.eventLikes}
-              currentUser={session.user.id}/>
+                eventId={property._id}
+                eventName={property.eventName}
+                eventDate={property.eventDate}
+                eventImage={property.eventImage}
+                eventOrganiser={property.eventOrganiser}
+                eventLocation={property.eventLocation}
+                eventAdmission={property.eventAdmission}
+                eventLikes={property.eventLikes}
+                currentUser={session.user.id}/>
             </div>
           ))}
         </div>
