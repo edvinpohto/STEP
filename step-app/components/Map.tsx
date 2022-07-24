@@ -7,6 +7,7 @@ import { Event } from '../types/models'
 import { useEffect, useState } from 'react';
 import formatDateAndTime from '../utils/formatDateAndTime';
 import formatLocation from '../utils/formatLocation';
+import Link from 'next/link';
 
 const locations = [
 	{ eventName: "test1",
@@ -111,11 +112,12 @@ export default function Mapbox() {
 											<div className="absolute bottom-0 opacity-100 pr-1 w-full text-xs">
 												{/* <span className="inline-block">{property.eventLocation}</span> */}
 												<span className="inline-block">{formatLocation(data.eventLocation[0])}</span>
-												<button 
-													className="inline-block float-right mr-5 text-indigo-700"
-													onClick={test}>
-													Go to event
-												</button>
+												<Link href={`/events/${data._id}`}>
+													<button 
+														className="inline-block float-right mr-5 text-indigo-700">
+														Go to event
+													</button>
+												</Link>
 											</div>
 										</div>
 									</div>
