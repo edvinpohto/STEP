@@ -19,7 +19,11 @@ module.exports = {
       '6xl': '4rem',
       '7xl': '5rem',
     },
-    extend: {},
+    extend: {
+      width: {
+        '128': '32rem',
+      },
+    },
     container: {
       center: true,
     },
