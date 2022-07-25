@@ -6,9 +6,11 @@ import { Dialog, Transition } from "@headlessui/react"
 import { SearchIcon } from "@heroicons/react/outline"
 import { Fragment, useState } from "react"
 import SearchBar from "./SearchBar"
+import SearchDropdown from "./SearchDropdown"
 
 export default function SearchModal() {
-  let [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [typeSearchState, setTypeSearchState] = useState(false)
 
   function closeModal() {
     setIsOpen(false)
@@ -17,21 +19,16 @@ export default function SearchModal() {
   function openModal() {
     setIsOpen(true)
   }
+
+  function openTypeSearch() {
+    setTypeSearchState(true)
+  }
+
+  function closeTypeSearch() {
+    setTypeSearchState(false)
+  }
   
 	return (
-		// {/* Search bar */}
-
-    // {/* <Link href='/searchPage'>
-    //   <button
-    //     type="button"
-    //     // onClick={}
-    //     className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-    //   >
-    //     <span className="sr-only">Search events</span>
-    //     <SearchIcon className="h-6 w-6" aria-hidden="true" />
-    //   </button>
-    // </Link> */}
-
     <div>
       <button
         type="button"
@@ -87,6 +84,26 @@ export default function SearchModal() {
                       </button>
                     </div> 
 
+                    <div className="fixed top-3 right-4 z-20 sm:right-4 sm:bottom-4">
+                      {typeSearchState === false 
+                      ? <button
+                          type="button"
+                          className="inline-flex justify-center rounded-full border border-transparent bg-gray-800 px-3 py-1 text-tiny font-medium text-white hover:bg-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2"
+                          onClick={openTypeSearch}
+                        >
+                          Search by user type
+                        </button>
+                      : <button
+                          type="button"
+                          className="inline-flex justify-center rounded-full border border-transparent bg-gray-800 px-3 py-1 text-tiny font-medium text-white hover:bg-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2"
+                          onClick={closeTypeSearch}
+                        >
+                          Search by text input
+                        </button>
+                      }
+                    </div> 
+
+                    {/* THIS IS A SEARCH BAR */}
                     {/* <div className="mt-2">
                       <form>   
                         <label htmlFor="eventSearch" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
@@ -100,9 +117,14 @@ export default function SearchModal() {
                       </form>
                     </div> */}
                     
-                    <div className="">
-                      <SearchBar />
-                    </div>
+                    {typeSearchState === false 
+                    ? <div className="">
+                        <SearchBar />
+                      </div>
+                    : <div className="">
+                        <SearchDropdown />
+                      </div>  
+                    }
 
 
                   </Dialog.Panel>

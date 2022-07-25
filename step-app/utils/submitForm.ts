@@ -4,6 +4,8 @@ import { tagsToArray } from "../utils/tagsToArray"
 import useInput from "../hooks/useInput";
 import addressToCoordinates from '../utils/geocode'
 
+// next up to do: add use type to the submit form and db so that the search works with submitted events
+
 interface CurrentUser {
   name: string;
   email: string;

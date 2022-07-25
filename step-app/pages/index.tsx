@@ -8,6 +8,7 @@ import EventCardSignedIn from '../components/EventCards/EventCardSignedIn'
 import EventCardSignedOut from '../components/EventCards/EventCardSignedOut'
 import { Event } from '../types/models'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
+import { Spinner } from 'flowbite-react'
 
 const Home: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
@@ -16,8 +17,8 @@ const Home: NextPage = ({ properties }: any) => {
     return (
       <>
         <NavbarSignedIn />
-        <div className='grid grid-cols-1 place-content-center place-items-center p-5'>
-          <h1>Loading...</h1>
+        <div className="text-center grid grid-cols-1 place-content-center place-items-center p-5">
+          <Spinner aria-label="Center-aligned spinner example" />
         </div>
       </>
     )

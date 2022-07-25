@@ -23,9 +23,8 @@ export default function EventCardSignedIn(property: Card) {
 				</div>
 				{/* <!-- body container --> */}
 				<div className="relative grow bg-white float-left h-full px-3 w-3/5">
-					{/* Heart Button */}
 					{/* Text */}
-					<Link href={`/events/${property.eventId}`}>
+					{/* <Link href={`/events/${property.eventId}`}> */}
 						<div>
 							<div className="block pt-2">
 								{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
@@ -43,7 +42,7 @@ export default function EventCardSignedIn(property: Card) {
 								<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
 							</div>
 						</div>
-					</Link>
+					{/* </Link> */}
 				</div>
 			</div>
 		</div>

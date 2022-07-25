@@ -103,7 +103,7 @@ export default function EventForm() {
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
                   {/* To get the location as coordinates: https://docs.mapbox.com/api/search/geocoding/ */}
                   <div className="col-span-6 sm:col-span-4">
-                    <label htmlFor="eventLocation" className="block text-sm font-medium text-red-900">
+                    <label htmlFor="eventLocation" className="block text-sm font-medium text-gray-700">
                       Location*
                     </label>
                     <input
@@ -178,6 +178,61 @@ export default function EventForm() {
                     <p className="mt-2 text-sm text-gray-500">
                       Tick the checkbox if your event is private.
                     </p>
+                  </div>
+
+                  <div className="col-span-6">
+                    <label htmlFor="" className="block text-sm font-medium text-gray-700">
+                      Event target group (user type)
+                    </label>
+
+                    <div className="mt-1">
+                      <input
+                        type="radio"
+                        name="eventType"
+                        id="noType"
+                        autoComplete="type"
+                        className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                      <label htmlFor="noType" className="inline-block ml-2 text-sm text-gray-700">
+                        None
+                      </label>
+                    </div>
+                    <div className="mt-1">
+                      <input
+                        type="radio"
+                        name="eventType"
+                        id="resident"
+                        autoComplete="type"
+                        className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                      <label htmlFor="resident" className="inline-block ml-2 text-sm text-gray-700">
+                        Resident
+                      </label>
+                    </div>
+                    <div className="mt-1">
+                      <input
+                        type="radio"
+                        name="eventType"
+                        id="student"
+                        autoComplete="type"
+                        className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                      <label htmlFor="student" className="inline-block ml-2 text-sm text-gray-700">
+                        Student
+                      </label>
+                    </div>
+                    <div className="mt-1">
+                      <input
+                        type="radio"
+                        name="eventType"
+                        id="visitor"
+                        autoComplete="type"
+                        className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                      <label htmlFor="visitor" className="inline-block ml-2 text-sm text-gray-700">
+                        Visitor
+                      </label>
+                    </div>
                   </div>
 
                   <div className="col-span-6 sm:col-span-4">

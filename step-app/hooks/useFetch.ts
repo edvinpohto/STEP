@@ -8,6 +8,7 @@ const BaseUrl = axios.create({
 const useFetch = () => {
   const [data, setData]: any = useState({
     slug: "",
+    // eventType: "any",
     results: {
       events: [],
     },
@@ -18,9 +19,18 @@ const useFetch = () => {
       const timeoutId = setTimeout(() => {
         const fetch = async () => {
           try {
-            // console.log(data.slug)
+            // if (data.type === "any") {
+            //   const res = await BaseUrl.get(`api/search/${data.slug}`);
+            //   console.log(res)
+            //   setData({ ...data, results: res.data });
+            // } else {
+            //   // const res = await BaseUrl.get(`api/search/${data.type + data.slug}`);
+            //   // console.log(res)
+            //   // setData({ ...data, results: res.data });
+            // }
+            console.log("From useFetch", data.slug)
             const res = await BaseUrl.get(`api/search/${data.slug}`);
-            console.log(res)
+            console.log("Res from useFetch", res)
             setData({ ...data, results: res.data });
           } catch (err) {
             console.log(err);

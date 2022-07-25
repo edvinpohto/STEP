@@ -8,6 +8,7 @@ import { Event } from '../types/models'
 import clientPromise from '../lib/mongodb'
 import PleaseSignIn from '../components/PleaseSignIn'
 import Intro from '../components/YourEventsIntro'
+import { Spinner } from 'flowbite-react'
 
 const YourEvents: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
@@ -16,8 +17,8 @@ const YourEvents: NextPage = ({ properties }: any) => {
     return (
       <>
         <NavbarSignedIn />
-        <div className='grid grid-cols-1 place-content-center place-items-center p-5'>
-          <h1>Loading...</h1>
+        <div className="text-center grid grid-cols-1 place-content-center place-items-center p-5">
+          <Spinner aria-label="Center-aligned spinner example" />
         </div>
       </>
     )
