@@ -53,8 +53,6 @@ const Home: NextPage = ({ properties }: any) => {
             </div>
           ))}
         </div>
-
-        {/* <NavbarBottom /> */}
       </div>
     )
   }

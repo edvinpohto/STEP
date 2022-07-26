@@ -3,12 +3,12 @@ import { getSession, useSession } from "next-auth/react"
 import Head from 'next/head'
 import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import YourEventCards from '../components/EventCards/YourEventCards'
 import { Event } from '../types/models'
 import clientPromise from '../lib/mongodb'
 import PleaseSignIn from '../components/PleaseSignIn'
 import Intro from '../components/LikedEventsIntro'
 import { Spinner } from 'flowbite-react'
+import EventCardSignedIn from '../components/EventCards/EventCardSignedIn'
 
 const LikedEvents: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
@@ -41,13 +41,16 @@ const LikedEvents: NextPage = ({ properties }: any) => {
             <div 
             key={property._id} 
             className='w-full'>
-              {/* <YourEventCards 
-              eventName={property.eventName}
-              eventDate={property.eventDate}
-              eventImage={property.eventImage}
-              eventOrganiser={property.eventOrganiser}
-              eventLocation={property.eventLocation}
-              eventAdmission={property.eventAdmission}/> */}
+              <EventCardSignedIn 
+                eventName={property.eventName}
+                eventDate={property.eventDate}
+                eventImage={property.eventImage}
+                eventOrganiser={property.eventOrganiser}
+                eventLocation={property.eventLocation}
+                eventAdmission={property.eventAdmission}
+                eventLikes={property.eventLikes}
+                currentUser={session.user.id} 
+                eventId={property._id}/>
             </div>
           ))}
         </div>
