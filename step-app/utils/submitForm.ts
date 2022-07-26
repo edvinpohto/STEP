@@ -1,7 +1,5 @@
-import React, { useState } from "react"
 import { getSession } from "next-auth/react"
 import { tagsToArray } from "../utils/tagsToArray"
-import useInput from "../hooks/useInput";
 import addressToCoordinates from '../utils/geocode'
 
 // next up to do: add use type to the submit form and db so that the search works with submitted events
@@ -41,7 +39,6 @@ export default async function handleSubmit(e: any) {
 
   // Get data from the form.
   // No _id field. MongoDB makes one automatically?
-  // The location field does not work yet?
   const data = {
     eventName: e.target.eventName.value,
     eventDate: e.target.eventDate.value,
@@ -54,7 +51,8 @@ export default async function handleSubmit(e: any) {
     eventAdmission: +e.target.eventAdmission.value,
     eventDuration: +e.target.eventDuration.value,
     eventLikes: [],
-    currentUser: userData
+    currentUser: userData,
+    eventType: e.target.eventType.value,
   }
 
   // Send the data to the server in JSON format.

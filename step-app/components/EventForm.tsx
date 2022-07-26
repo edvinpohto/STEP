@@ -190,6 +190,7 @@ export default function EventForm() {
                         type="radio"
                         name="eventType"
                         id="noType"
+                        value={""}
                         autoComplete="type"
                         className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
@@ -202,6 +203,7 @@ export default function EventForm() {
                         type="radio"
                         name="eventType"
                         id="resident"
+                        value={"resident"}
                         autoComplete="type"
                         className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
@@ -214,6 +216,7 @@ export default function EventForm() {
                         type="radio"
                         name="eventType"
                         id="student"
+                        value={"student"}
                         autoComplete="type"
                         className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
@@ -226,6 +229,7 @@ export default function EventForm() {
                         type="radio"
                         name="eventType"
                         id="visitor"
+                        value={"visitor"}
                         autoComplete="type"
                         className="inline-block w-5 h-5 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
