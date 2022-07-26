@@ -9,7 +9,8 @@ import clientPromise from '../../lib/mongodb'
 import PleaseSignIn from '../../components/PleaseSignIn'
 import Intro from '../../components/YourEventsIntro'
 import { useRouter } from 'next/router'
-import EventPage from '../../components/EventPage'
+import EventPageSignedIn from '../../components/EventPages/EventPageSignedIn'
+import EventPageSignedOut from '../../components/EventPages/EventPageSignedOut'
 import { useEffect, useState } from 'react'
 import { ObjectId } from 'mongodb'
 
@@ -41,7 +42,7 @@ const SpecificEvent: NextPage = ({ properties }: any) => {
   
         <NavbarSignedIn />
 
-        <EventPage 
+        <EventPageSignedIn 
           eventId={properties[0]._id}
           _id={properties[0]._id} 
           eventDescription={properties[0].eventDescription}
@@ -54,17 +55,40 @@ const SpecificEvent: NextPage = ({ properties }: any) => {
           eventPrivacy={properties[0].eventPrivacy}
           eventLikes={properties[0].eventLikes}
           eventTags={properties[0].eventTags} 
-          eventDuration={properties[0].eventDuration}/>
+          eventDuration={properties[0].eventDuration}
+          currentUser={session.user.id}/>
 
       </div>
     )
   }
 
   return (
-    <>
-      <NavbarSignedOut />
+    <div>
+        <Head>
+          <title>St Andrews Events Platform</title>
+          <meta name="keywords" content="STEP, St Andrews, Events" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+  
+        <NavbarSignedOut />
 
-    </>
+        <EventPageSignedOut 
+          eventId={properties[0]._id}
+          _id={properties[0]._id} 
+          eventDescription={properties[0].eventDescription}
+          eventName={properties[0].eventName}
+          eventDate={properties[0].eventDate}
+          eventImage={properties[0].eventImage}
+          eventOrganiser={properties[0].eventOrganiser}
+          eventLocation={properties[0].eventLocation}
+          eventAdmission={properties[0].eventAdmission}
+          eventPrivacy={properties[0].eventPrivacy}
+          eventLikes={properties[0].eventLikes}
+          eventTags={properties[0].eventTags} 
+          eventDuration={properties[0].eventDuration}
+          currentUser={""}/>
+
+      </div>
   )
 }
 

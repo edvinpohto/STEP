@@ -12,6 +12,7 @@ export interface Event {
     eventAdmission: number,
     eventDuration: number,
     eventLikes: string[],
+    currentUser: string,
 }
 
 export interface Card {
