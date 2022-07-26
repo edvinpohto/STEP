@@ -15,7 +15,7 @@ export default async function handler(
   const client = await clientPromise
   const db = client.db("step")
 
-  const events = await db.collection("events").find({ "currentUser.id": `${userID}` }).toArray();
+  const events = await db.collection("events").find({ "currentUser.id": `${userID}` }).sort({ eventDate: 1 }).toArray();
 
   res.status(200).json({ events });
 }

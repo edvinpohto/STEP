@@ -35,7 +35,7 @@ const Home: NextPage = ({ properties }: any) => {
   
         <NavbarSignedIn />
   
-        <div className='grid p-3 sm:justify-center'>
+        <div className='grid p-2 sm:justify-center'>
             {properties && properties.map((property: Event) => (
             <div 
             key={property._id} 
@@ -93,7 +93,7 @@ export async function getServerSideProps(context: GetServerSideProps) {
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({}).toArray();
+    const events = await db.collection("events").find({}).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {

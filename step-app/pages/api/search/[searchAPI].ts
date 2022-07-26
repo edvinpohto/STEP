@@ -27,7 +27,7 @@ export default async function handler(
 
   // const query = { $text: { $search: searchAPI } };
 
-  const events = await db.collection("events").find({ $text: { $search: searchAPI } }).toArray();
+  const events = await db.collection("events").find({ $text: { $search: searchAPI } }).sort({ eventDate: 1 }).toArray();
 
   res.status(200).json({ events });
 }

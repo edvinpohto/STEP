@@ -34,7 +34,7 @@ export default function EventCardSignedIn(property: Card) {
 	}
 
 	return(
-		<div className="grid m-3 sm:w-96">
+		<div className="grid m-2 sm:w-96">
 			<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 				{/* <!-- media container --> */}
 				<div className="relative flex-none bg-none float-left h-full w-1/4">
