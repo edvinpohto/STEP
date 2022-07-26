@@ -90,10 +90,14 @@ const Home: NextPage = ({ properties }: any) => {
 }
 
 export async function getServerSideProps(context: GetServerSideProps) {
+  var todaysDate = new Date(Date.now()).toISOString()
+
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({}).toArray();
+    const events = await db.collection("events").find({
+      eventDate: { $gt: todaysDate }
+    }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {

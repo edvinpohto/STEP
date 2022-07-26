@@ -90,10 +90,15 @@ const Home: NextPage = ({ properties }: any) => {
 }
 
 export async function getServerSideProps(context: GetServerSideProps) {
+  var todaysDate = new Date(Date.now()).toISOString()
+  console.log(todaysDate)
+
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({}).sort({ eventDate: 1 }).toArray();
+    const events = await db.collection("events").find({
+      eventDate: { $gt: todaysDate }
+    }).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {

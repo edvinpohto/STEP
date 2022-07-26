@@ -69,11 +69,12 @@ const YourEvents: NextPage = ({ properties }: any) => {
 export async function getServerSideProps(context: GetServerSideProps | any) {
   const session = await getSession(context) //pass context to authenticate create session
   const userID = session?.user.id //get id from session
+  var todaysDate = new Date(Date.now()).toISOString()
 
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({ "currentUser.id": `${userID}` }).sort({ eventDate: 1 }).toArray();
+    const events = await db.collection("events").find({ eventDate: { $gt: todaysDate }, "currentUser.id": `${userID}` }).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {
