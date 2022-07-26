@@ -12,17 +12,17 @@ export default function EventCardSignedOut(property: Card) {
 
 	return(
 		<div className="grid m-3 sm:w-96">
-			<div className="flex rounded-sm shadow-lg h-32 w-full hover:shadow-xl">
+			<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 				{/* <!-- media container --> */}
 				<div className="relative flex-none bg-none float-left h-full w-1/4">
 						<img 
 						// src="https://source.unsplash.com/random/" 
 						src={property.eventImage} 
 						alt="img" 
-						className="aspect-auto bg-center object-none h-full w-full"/>
+						className="aspect-auto rounded-l-lg bg-center object-none h-full w-full"/>
 				</div>
 				{/* <!-- body container --> */}
-				<div className="relative grow bg-white float-left h-full px-3 w-3/5">
+				<div className="relative grow rounded-lg bg-white float-left h-full px-3 w-3/5">
 					{/* Heart Button */}
 					<div className="relative inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         		<div className="absolute top-3 right-0 sm:top-2 sm:right-2">

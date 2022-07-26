@@ -11,17 +11,17 @@ export default function YourEventCards(property: Card) {
 
 	return(
 		<div className="grid m-3 sm:w-96">
-				<div className="flex rounded-sm shadow-lg h-32 w-full hover:shadow-xl">
+				<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 					{/* <!-- media container --> */}
 					<div className="relative flex-none bg-none float-left h-full w-1/4">
 							<img 
 							// src="https://source.unsplash.com/random/" 
 							src={property.eventImage} 
 							alt="img" 
-							className="aspect-auto object-cover h-full w-full"/>
+							className="aspect-auto rounded-l-lg object-cover h-full w-full"/>
 					</div>
 					{/* <!-- body container --> */}
-					<div className="relative grow bg-white float-left h-full px-3 w-3/5">
+					<div className="relative grow rounded-lg bg-white float-left h-full px-3 w-3/5">
 						{/* Edit event */}
 						<div className="absolute pt-3 opacity-100 pr-1 w-full text-xs">
 								<a 
