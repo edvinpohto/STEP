@@ -56,6 +56,17 @@ export default function SearchModal() {
 
           <div className="">
             <div className="fixed h-full inset-0">
+
+            <div className="fixed bottom-20 right-9 mt-4 z-20 sm:right-4 sm:bottom-4">
+              <button
+                type="button"
+                className="inline-flex justify-center rounded-full border border-transparent bg-blue-100 px-4 py-1 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                onClick={closeModal}
+              >
+                Close search
+              </button>
+            </div> 
+
               <div className="grid fixed w-full h-full sm:place-content-center p-5 pt-16 pb-16 text-center">
                 <Transition.Child
                   as={Fragment}
@@ -73,16 +84,6 @@ export default function SearchModal() {
                     >
                       Search for events
                     </Dialog.Title>
-
-                    <div className="fixed bottom-4 right-4 mt-4 z-20 sm:right-4 sm:bottom-4">
-                      <button
-                        type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                        onClick={closeModal}
-                      >
-                        Close search
-                      </button>
-                    </div> 
 
                     <div className="fixed top-3 right-4 z-20 sm:right-4 sm:bottom-4">
                       {typeSearchState === false 
@@ -117,14 +118,16 @@ export default function SearchModal() {
                       </form>
                     </div> */}
                     
-                    {typeSearchState === false 
-                    ? <div className="">
-                        <SearchBar />
-                      </div>
-                    : <div className="">
-                        <SearchDropdown />
-                      </div>  
-                    }
+                    <div className="">
+                      {typeSearchState === false 
+                      ? <div className="">
+                          <SearchBar />
+                        </div>
+                      : <div className="">
+                          <SearchDropdown />
+                        </div>  
+                      }
+                    </div>
 
 
                   </Dialog.Panel>

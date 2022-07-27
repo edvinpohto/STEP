@@ -36,6 +36,8 @@
 //   }
 // }
 
+import 'cypress-file-upload'
+
 Cypress.Commands.add("loginByGoogleApi", () => {
   cy.log('Logging in to Google')
   

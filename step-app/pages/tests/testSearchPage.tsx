@@ -2,9 +2,9 @@ import { Spinner } from 'flowbite-react'
 import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import Head from 'next/head'
-import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
-import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import SearchBar from '../components/SearchBar'
+import NavbarSignedIn from '../../components/Navbars/NavbarSignedIn'
+import NavbarSignedOut from '../../components/Navbars/NavbarSignedOut'
+import SearchBar from '../../components/SearchBar'
 
 const YourEvents: NextPage = () => {
   const { data: session, status } = useSession();
@@ -52,10 +52,7 @@ const YourEvents: NextPage = () => {
       </Head>
   
       <NavbarSignedOut />
-      
-      <div className='p-4'>
-        <SearchBar />
-      </div>
+      <SearchBar />
   
     </div>
   )
