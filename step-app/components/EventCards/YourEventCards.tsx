@@ -6,50 +6,44 @@ import formatLocation from '../../utils/formatLocation';
 export default function YourEventCards(property: Card) {
 	 // Parse date & time into desired form
 	 let formattedDateAndTime: string = formatDateAndTime(property.eventDate)
-	 // Parse location into desired form for card
-	 let formattedLocation: string = formatLocation(property.eventLocation[0])
 
 	return(
-		<div className="grid m-3 sm:w-96">
-				<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
-					{/* <!-- media container --> */}
-					<div className="relative flex-none bg-none float-left h-full w-1/4">
-							<img 
-							// src="https://source.unsplash.com/random/" 
-							src={property.eventImage} 
-							alt="img" 
-							className="aspect-auto rounded-l-lg object-cover h-full w-full"/>
+		<div className="grid  p-1 border-b-2 sm:w-96">
+			<div className="relative rounded-md h-full px-3 w-full">
+				
+				<Link href={`/events/${property.eventId}`}>
+					<div className='hover:cursor-pointer inline-block'>
+						<div>
+							<span className="block text-sm font-semibold mr-4">{property.eventName}</span>
+						</div>
+						<div className="block">
+							{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
+							<span className="text-slate-500 text-xs">{formattedDateAndTime}</span>
+						</div>
 					</div>
-					{/* <!-- body container --> */}
-					<div className="relative grow rounded-lg bg-white float-left h-full px-3 w-3/5">
-						{/* Edit event */}
-						<div className="absolute pt-3 opacity-100 pr-1 w-full text-xs">
-								<a 
-									href='events/editEvent'
-									className="inline-block float-right mr-5 text-indigo-700"
-									onClick={() => test()}>
-									Edit event
-								</a>
-							</div>
-						{/* Text */}
-						<Link href={`/events/${property.eventId}`}>
-							<div>
-								<div className="block pt-2">
-									{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
-									<span className="text-slate-500 text-xs">{formattedDateAndTime}</span>
-								</div>
-								<span className="block mt-2 text-sm mr-4">{property.eventName}</span>
-								<span className="block text-xs">Organiser: {property.eventOrganiser}</span>
-								<div className="absolute bottom-2 opacity-100 pr-1 w-full text-xs">
-									{/* <span className="inline-block">{property.eventLocation}</span> */}
-									<span className="inline-block">{formattedLocation}</span>
-									<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
-								</div>
-							</div>
-						</Link>
-					</div>
+				</Link>
+
+				<div className='inline-block float-right mt-1'>
+					{/* Edit event */}
+					<Link href={"/"}>
+						<div className="inline-block mr-3 hover:cursor-pointer">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
+								<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+							</svg>
+						</div>
+					</Link>
+					{/* Delete event */}
+					<Link href={"/"}>
+						<div className='inline-block hover:cursor-pointer'>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" className="bi bi-trash3" viewBox="0 0 16 16">
+								<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+							</svg>
+						</div>
+					</Link>
 				</div>
+
 			</div>
+		</div>
 	)
 }
 
