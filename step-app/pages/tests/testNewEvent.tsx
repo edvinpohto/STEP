@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import NavbarSignedOut from "../../components/Navbars/NavbarSignedOut";
-import EventForm from "../../components/tests/TestEventForm";
+import EventForm from "../../testHelpers/testComponents/TestEventForm";
 
 const NewEvent: NextPage = () => {
   

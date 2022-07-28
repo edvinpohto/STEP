@@ -1,5 +1,5 @@
-import { tagsToArray } from "../utils/tagsToArray"
-import addressToCoordinates from '../utils/geocode'
+import { tagsToArray } from "../../utils/tagsToArray"
+import addressToCoordinates from '../../utils/geocode'
 
 interface CurrentUser {
   name: string;

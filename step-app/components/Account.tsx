@@ -1,4 +1,5 @@
 import { useSession, signOut } from "next-auth/react"
+import deleteAccount from "../utils/deleteAccount";
 
 export default function Account() {
 	const { data: session, status } = useSession();
@@ -31,7 +32,7 @@ export default function Account() {
 					{/* HERE WE NEED TO IMPLEMENT A DELETE ACCOUNT FUNCTION */}
 					<div className="bg-white px-4 py-5 sm:px-6">
 						<button
-							onClick={() => deleteAccount()}
+							onClick={() => deleteAccount(session?.user.id)}
 							className="text-sm font-medium text-rose-700">
 							Delete account
 						</button>
@@ -40,8 +41,4 @@ export default function Account() {
 			</div>
 		</div>
 	)
-}
-
-function deleteAccount() {
-	console.log("Account deletetion has not been created. Need to delete user and also the events by that user.")
 }

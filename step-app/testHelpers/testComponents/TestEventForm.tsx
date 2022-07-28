@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import useInput from "../../hooks/useInput";
-import handleSubmit from "../../testUtils/testSubmitForm";
+import handleSubmit from "../testUtils/testSubmitForm";
 import axios from "axios";
 
 interface CurrentUser {
