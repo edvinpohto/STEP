@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import clientPromise from "../../lib/mongodb";
+import clientPromise from "../../../lib/mongodb";
 
 export default async function handler(
   req: NextApiRequest,
@@ -23,7 +23,7 @@ export default async function handler(
 	// Found the name.
 	// Sends a HTTP success code
 	res.status(200).json({data: 
-		`Event name: ${body.eventName} 
+		`Event name: ${body.eventName}
 		Event date: ${body.eventDate} 
 		Event location: ${body.eventLocation}
 		Event description: ${body.eventDescription} 

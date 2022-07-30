@@ -139,7 +139,7 @@ export default function EventPage(property: Event) {
 					
 							{/* Privacy */}
 							{property.eventPrivacy !== false &&
-								<div className="absolute right-12 top-4 z-10">
+								<div className="absolute bottom-4 right-2 z-5">
 									<div className="rounded-full bg-red-700 text-tiny text-white px-2 py-1 mr-2 inline-block">Private</div>
 								</div>
 							}

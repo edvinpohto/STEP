@@ -12,19 +12,13 @@ interface CurrentUser {
 const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/"
 
 // Handles the submit event on form submit.
-export default async function handleSubmit(e: any) {
+export default async function handleUpdate(e: any) {
   // Stop the form from submitting and refreshing the page.
   e.preventDefault()
 
-  const session = await getSession();
-  // console.log(session?.user)
-  let userData: CurrentUser = session?.user
-
   // Parse the tags from the form into an array of tags
   let tags: string = e.target.eventTags.value
-  // console.log("Tags:", tags)
   let formattedTags: string[] = tagsToArray(tags)
-  // console.log("Array of tags:", formattedTags)
 
   // Get image name and build address for image retrieval
   const imageName = e.target.eventImage.title;
@@ -35,8 +29,10 @@ export default async function handleSubmit(e: any) {
   const addressCoordinates = await addressToCoordinates(address)
   const eventLocationArray = [address, addressCoordinates]
 
+  // Event ID
+  const eventId = e.target.eventId.value
+
   // Get data from the form.
-  // No _id field. MongoDB makes one automatically?
   const data = {
     eventName: e.target.eventName.value,
     eventDate: e.target.eventDate.value,
@@ -48,8 +44,6 @@ export default async function handleSubmit(e: any) {
     eventPrivacy: e.target.eventPrivacy.checked,
     eventAdmission: +e.target.eventAdmission.value,
     eventDuration: +e.target.eventDuration.value,
-    eventLikes: [],
-    currentUser: userData,
     eventType: e.target.eventType.value,
   }
 
@@ -57,7 +51,7 @@ export default async function handleSubmit(e: any) {
   const JSONdata = JSON.stringify(data)
 
   // API endpoint where we send form data.
-  const endpoint = '/api/postEvent/createEvent'
+  const endpoint = `/api/postEvent/${eventId}`
 
   // Form the request for sending data to the server.
   const options = {
