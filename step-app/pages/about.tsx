@@ -25,7 +25,7 @@ const About: NextPage = () => {
         <Head>
           <title>St Andrews Events Platform</title>
           <meta name="keywords" content="STEP, St Andrews, Events" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/icon_white.ico" />
         </Head>
         <NavbarSignedIn />
 				<div className='flex justify-center'>
@@ -50,7 +50,7 @@ const About: NextPage = () => {
       <Head>
         <title>St Andrews Events Platform</title>
         <meta name="keywords" content="STEP, St Andrews, Events" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon_white.ico" />
       </Head>
       <NavbarSignedOut />
 			<div>

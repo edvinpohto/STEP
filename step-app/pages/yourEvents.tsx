@@ -30,7 +30,7 @@ const YourEvents: NextPage = ({ properties }: any) => {
         <Head>
           <title>St Andrews Events Platform</title>
           <meta name="keywords" content="STEP, St Andrews, Events" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/icon_white.ico" />
         </Head>
   
         <NavbarSignedIn />

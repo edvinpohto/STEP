@@ -27,7 +27,7 @@ const NewEvent: NextPage = () => {
         <div>
           <Head>
             <title>Create New Event</title>
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/icon_white.ico" />
           </Head>
 
           <NavbarSignedIn />
