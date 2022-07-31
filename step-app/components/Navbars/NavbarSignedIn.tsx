@@ -7,7 +7,6 @@ import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import signOutRedirect from '../../utils/signOutRedirect'
-import SearchBar from '../SearchBar'
 import SearchModal from '../SearchModal'
 
 const navigation = [
@@ -25,7 +24,7 @@ export default function NavbarSignedIn() {
     <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-10 drop-shadow-lg">
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
               
               {/* Mobile menu button*/}
@@ -174,7 +173,7 @@ export default function NavbarSignedIn() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block px-3 py-2 rounded-md text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}

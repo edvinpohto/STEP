@@ -62,20 +62,22 @@ export default function EventForm(property: any) {
   return(
 		<>
 			<div>
-				<div className="px-4 sm:px-0 mt-3">
-					<h3 className="text-lg font-medium leading-6 text-gray-900">Updating event: {property.eventName}</h3>
-					<p className="mt-1 text-sm text-gray-600">
-						The fields marked with an asterisk (*) are mandatory.
-					</p>
-				</div>
+        <div className="flex justify-center">
+          <div className="max-w-3xl w-full bg-white shadow overflow-hidden sm:rounded-lg">
+            <div className="px-4 py-5 sm:px-6">
+              <h3 className="text-lg leading-6 font-medium text-gray-900">Updating event: {property.eventName}</h3>
+              <p className="mt-1 max-w-2xl text-sm text-gray-500">The fields marked with an asterisk (*) are mandatory.</p>
+            </div>
+          </div>
+        </div>
 
 				{/* Basic HTML Form */}
-				<div className="mt-5">
+				<div className="sm:flex sm:justify-center">
           {/* <form action="#" method="POST"> */}
           <form onSubmit={handleUpdate}>
-            <div className="shadow">
-              <div className="px-4 py-5 bg-white space-y-6">
-                <div className="grid grid-cols-6 gap-4">
+            <div className="">
+              <div className="px-4 py-5 space-y-6">
+                <div className="">
 
                   <div className="hidden col-span-6 sm:col-span-3">
                     <label htmlFor="eventId" className="block text-sm font-medium text-gray-700">
@@ -106,7 +108,7 @@ export default function EventForm(property: any) {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-3">
+                  <div className="mt-2 col-span-6 sm:col-span-3">
                     <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700">
                       Date and time*
                     </label>
@@ -122,7 +124,7 @@ export default function EventForm(property: any) {
 
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
                   {/* To get the location as coordinates: https://docs.mapbox.com/api/search/geocoding/ */}
-                  <div className="col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-gray-700">
                       Location*
                     </label>
@@ -159,7 +161,7 @@ export default function EventForm(property: any) {
                     )}
                   </div>
 
-                  <div className="col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4">
                     <label htmlFor="eventOrganiser" className="block text-sm font-medium text-gray-700">
                       Organiser*
                     </label>
@@ -174,7 +176,7 @@ export default function EventForm(property: any) {
                     />
                   </div>
                   
-                  <div className="col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4">
                     <label htmlFor="eventTags" className="block text-sm font-medium text-gray-700">
                       Tags
                     </label>
@@ -188,7 +190,7 @@ export default function EventForm(property: any) {
                     />
                   </div>
 
-                  <div className="col-span-6">
+                  <div className="mt-2 col-span-6">
                     <label htmlFor="eventPrivacy" className="text-sm font-medium text-gray-700">
                       Privacy
                     </label>
@@ -206,7 +208,7 @@ export default function EventForm(property: any) {
                     />
                   </div>
 
-                  <div className="col-span-6">
+                  <div className="mt-2 col-span-6">
                     <label htmlFor="" className="block text-sm font-medium text-gray-700">
                       Event target group (user type)
                     </label>
@@ -266,7 +268,7 @@ export default function EventForm(property: any) {
                     </div>
                   </div>
 
-                  <div className="col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4">
                     <label htmlFor="eventAdmission" className="block text-sm font-medium text-gray-700">
                       Admission fee (£)
                     </label>
@@ -280,7 +282,7 @@ export default function EventForm(property: any) {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4">
                     <label htmlFor="eventDuration" className="block text-sm font-medium text-gray-700">
                       Duration (h)
                     </label>
@@ -296,7 +298,7 @@ export default function EventForm(property: any) {
                 </div>
               
                 <div>
-                  <label htmlFor="eventDescription" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="eventDescription" className="mt-2 block text-sm font-medium text-gray-700">
                     Description
                   </label>
                   <div className="mt-1">
@@ -314,7 +316,7 @@ export default function EventForm(property: any) {
                   </p>
                 </div>
           
-                <div>
+                <div className="mt-2 ">
                   <label className="block text-sm font-medium text-gray-700">Cover photo*</label>
                   <p className="text-sm text-rose-700">Please re-submit or change your cover photo</p>
                   <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
