@@ -37,13 +37,15 @@ export default function EventCardSignedIn(property: Card) {
 		<div className="grid m-2 sm:w-96">
 			<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 				{/* <!-- media container --> */}
-				<div className="relative flex-none bg-none float-left h-full w-1/4">
+				<Link href={`/events/${property.eventId}`}>
+				<div className="relative flex-none bg-none float-left h-full w-1/4 cursor-pointer">
 						<img 
 						// src="https://source.unsplash.com/random/" 
 						src={property.eventImage} 
 						alt="img" 
 						className="aspect-auto rounded-l-lg object-cover h-full w-full"/>
 				</div>
+				</Link>
 				{/* <!-- body container --> */}
 				<div className="relative grow rounded-lg bg-white float-left h-full px-3 w-3/5">
 
@@ -71,7 +73,7 @@ export default function EventCardSignedIn(property: Card) {
 
 					{/* Text */}
 					<Link href={`/events/${property.eventId}`}>
-						<div>
+						<div className='cursor-pointer'>
 							<div className="block pt-2">
 								{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}
 								<span className="text-slate-500 text-xs">{formattedDateAndTime}</span>
@@ -85,7 +87,10 @@ export default function EventCardSignedIn(property: Card) {
 									<path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 								</svg>
 								<span className="inline-block">{formattedLocation}</span>
-								<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
+								{property.eventAdmission > 0 
+								? <span className="inline-block float-right mr-5">£{property.eventAdmission}</span>
+								: <span className="inline-block float-right mr-5">Free</span>
+								}
 							</div>
 						</div>
 					</Link>

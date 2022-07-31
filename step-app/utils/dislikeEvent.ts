@@ -1,4 +1,4 @@
-export default async function likeEvent(currentUser: string, eventId: string) {
+export default async function dislikeEvent(currentUser: string, eventId: string) {
 
   const data = {
     currentUser: currentUser,

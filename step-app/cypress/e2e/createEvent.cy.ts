@@ -1,5 +1,7 @@
 // Guide from here https://www.lambdatest.com/blog/fill-and-submit-forms-in-cypress/
 
+// When this test is run, the location coordinates are not added for some reason, breaking the map.
+
 import { contains } from "cypress/types/jquery"
 
 describe('Create an event', () => {

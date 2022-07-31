@@ -11,7 +11,7 @@ export default function EventCardSignedIn(property: Card) {
 	let formattedLocation: string = formatLocation(property.eventLocation[0])
 
 	return(
-		<div className="grid mt-4 sm:w-96">
+		<div className="grid mt-4 cursor-pointer sm:w-96">
 			<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 				{/* <!-- media container --> */}
 				<div className="relative flex-none bg-none float-left h-full w-1/4">
@@ -39,7 +39,10 @@ export default function EventCardSignedIn(property: Card) {
 									<path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 								</svg>
 								<span className="inline-block">{formattedLocation}</span>
-								<span className="inline-block float-right mr-5">Free &ndash; £{property.eventAdmission}</span>
+								{property.eventAdmission > 0 
+								? <span className="inline-block float-right mr-5">£{property.eventAdmission}</span>
+								: <span className="inline-block float-right mr-5">Free</span>
+								}
 							</div>
 						</div>
 					{/* </Link> */}

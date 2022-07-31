@@ -70,7 +70,8 @@ export default NextAuth({
   theme: {
     colorScheme: "light", // "auto" | "dark" | "light"
     brandColor: "#3C6562", // Hex color code
-    logo: "https://seeklogo.com/images/U/university-of-st-andrews-seal-logo-CCC7DF3F6B-seeklogo.com.png" // Absolute URL to image
+    logo: "https://step-event-images.s3.eu-west-2.amazonaws.com/blacklogo.png" // Absolute URL to image
+    // logo: "https://seeklogo.com/images/U/university-of-st-andrews-seal-logo-CCC7DF3F6B-seeklogo.com.png" // Absolute URL to image
   }
 })
 
