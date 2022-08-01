@@ -1,30 +1,14 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { getSession, useSession } from "next-auth/react"
 import Head from 'next/head'
-import NavbarSignedIn from '../../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../../components/Navbars/NavbarSignedOut'
 import YourEventCards from '../../components/EventCards/YourEventCards'
 import { Event } from '../../types/models'
 import clientPromise from '../../lib/mongodb'
-import PleaseSignIn from '../../components/PleaseSignIn'
 import Intro from '../../components/YourEventsIntro'
-import { Spinner } from 'flowbite-react'
 
 const YourEvents: NextPage = ({ properties }: any) => {
-  const { data: session, status } = useSession();
-  
-  if (status === 'loading') {
-    return (
-      <>
-        <NavbarSignedIn />
-        <div className="text-center grid grid-cols-1 place-content-center place-items-center p-5">
-          <Spinner aria-label="Center-aligned spinner example" />
-        </div>
-      </>
-    )
-  }
 
-  if (session) {
     return (
       <div>
         <Head>
@@ -33,7 +17,7 @@ const YourEvents: NextPage = ({ properties }: any) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
   
-        <NavbarSignedIn />
+        <NavbarSignedOut />
         <Intro />
   
         <div className='grid p-3 sm:justify-center'>
@@ -50,20 +34,12 @@ const YourEvents: NextPage = ({ properties }: any) => {
                 eventLocation={property.eventLocation}
                 eventAdmission={property.eventAdmission}
                 eventLikes={property.eventLikes}
-                currentUser={session.user.id}/>
+                currentUser={""}/>
             </div>
           ))}
         </div>
       </div>
     )
-  }
-
-  return (
-    <>
-      <NavbarSignedOut />
-      <PleaseSignIn />
-    </>
-  )
 }
 
 export async function getServerSideProps(context: GetServerSideProps | any) {

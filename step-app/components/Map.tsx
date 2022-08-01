@@ -104,7 +104,8 @@ export default function Mapbox() {
 												<span className="inline-block">{formatLocation(data.eventLocation[0])}</span>
 												<Link href={`/events/${data._id}`}>
 													<button 
-														className="inline-block float-right mr-5 text-indigo-700">
+														className="inline-block float-right mr-5 text-indigo-700"
+														id="goToEvent">
 														Go to event
 													</button>
 												</Link>

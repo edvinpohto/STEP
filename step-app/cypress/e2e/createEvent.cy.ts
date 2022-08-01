@@ -8,7 +8,7 @@ describe('Create an event', () => {
   it('Visits the create event page and creates an event', () => {
     cy.visit('/tests/testNewEvent')
     
-    cy.get('#eventName').type('TestEvent')
+    cy.get('#eventName').type('TestEventId1997')
     cy.get('#eventDate').type('2022-12-05T13:55')
     cy.get('#eventLocation').type('12 Freddie Tait Street, St. Andrews, KY16 8HQ, United Kingdom')
     cy.get('#eventOrganiser').type('Edvin Pohto')
@@ -21,7 +21,6 @@ describe('Create an event', () => {
 
     const filePath='1.jpg'
     cy.get('#eventImage').attachFile(filePath)
-    // cy.get('#uploaded-files').contains('1')
     cy.get('#submit').click()
   })
 })

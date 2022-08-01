@@ -37,6 +37,7 @@ export default function YourEventCards(property: Card) {
 
 					{/* Delete event */}
 						<button 
+						id='deleteButton'
 						className='inline-block hover:cursor-pointer'
 						onClick={() => deleteEvent(property.eventId, property.currentUser)}>
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" className="bi bi-trash3" viewBox="0 0 16 16">
