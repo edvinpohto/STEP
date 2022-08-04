@@ -37,7 +37,7 @@ export default function EventCardSignedIn(property: Card) {
 		<div className="grid m-2 sm:w-96">
 			<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 				{/* <!-- media container --> */}
-				<Link href={`/events/${property.eventId}`}>
+				<Link href={`/tests/events/${property.eventId}`}>
 				<div className="relative flex-none bg-none float-left h-full w-1/4 cursor-pointer">
 						<img 
 						// src="https://source.unsplash.com/random/" 
@@ -72,7 +72,7 @@ export default function EventCardSignedIn(property: Card) {
 					}
 
 					{/* Text */}
-					<Link href={`/events/${property.eventId}`}>
+					<Link href={`/tests/events/${property.eventId}`}>
 						<div className='cursor-pointer'>
 							<div className="block pt-2">
 								{/* <span className="text-slate-500 text-xs">Mon, APR 09, 7:00 PM</span> */}

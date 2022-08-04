@@ -163,6 +163,9 @@ export default function EventForm() {
                       autoComplete="tags"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                     />
+                    <p className="mt-2 text-sm text-gray-500">
+                      Separate tags with commas.
+                    </p>
                   </div>
 
                   <div className="mt-2 col-span-6">

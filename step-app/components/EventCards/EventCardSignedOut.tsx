@@ -11,7 +11,7 @@ export default function EventCardSignedOut(property: Card) {
 	let formattedLocation: string = formatLocation(property.eventLocation[0])
 
 	return(
-		<div className="grid m-3 sm:w-96">
+		<div className="grid m-2 sm:w-96">
 			<div className="flex rounded-lg shadow-lg h-32 w-full hover:shadow-xl">
 				{/* <!-- media container --> */}
 				<Link href={`/events/${property.eventId}`}>
@@ -20,7 +20,7 @@ export default function EventCardSignedOut(property: Card) {
 						// src="https://source.unsplash.com/random/" 
 						src={property.eventImage} 
 						alt="img" 
-						className="aspect-auto rounded-l-lg bg-center object-none h-full w-full"/>
+						className="aspect-auto rounded-l-lg object-cover h-full w-full"/>
 				</div>
 				</Link>
 				{/* <!-- body container --> */}

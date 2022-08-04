@@ -9,9 +9,13 @@ declare global {
        * Custom command to select DOM element by data-cy attribute.
        * @example cy.dataCy('greeting')
        */
-       loginByGoogleApi(): Chainable<Element>
+       loginByGoogleApi(): Chainable<Element>,
+       "login": any
+
     }
   }
 }
+
+require("./commands");
 
 export {}

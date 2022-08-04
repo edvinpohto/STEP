@@ -4,7 +4,7 @@ import { Card } from '../../types/models'
 import formatDateAndTime from "../../utils/formatDateAndTime"
 import formatLocation from '../../utils/formatLocation'
 
-export default function EventCardSignedIn(property: Card) {
+export default function EventCardSearched(property: Card) {
 	// Parse date & time into desired form
 	let formattedDateAndTime: string = formatDateAndTime(property.eventDate)
 	// Parse location into desired form for card

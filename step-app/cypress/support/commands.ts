@@ -38,6 +38,16 @@
 
 import 'cypress-file-upload'
 
+// https://github.com/nextauthjs/next-auth/discussions/2053
+Cypress.Commands.add("login", () => {
+	cy.intercept("/api/auth/session", { fixture: "session.json" }).as("session");
+
+	// Set the cookie for cypress.
+	// It has to be a valid cookie so next-auth can decrypt it and confirm its validity.
+	cy.setCookie("next-auth.session-token", "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..CaLUqsxSc_qK1F7N.jXNKNrjlDwgg8tDOVXXTQsbdUe7XjD-RLGC6cbtxAHTArVl3OlCiCKuPGT5-o5sAsYj7OXWGUUTZXy9JGTwWLVFifLTLI-05KAqZm9Y3D_r03gu93E8aX4vkrO31-0NVBMr5-F6obHMrSg96fpU-GBedVkBg0tc-fYZKMsNaVrFpI4MOvkpd1goCRio0PE-CvWN4NzJSAJVDuIEtO7ogdruZdZfoXeBz6XSAy3iiYofjE2uUpIEbRu-3kT5lqZ1o-1nm6mQqZdG9Fa6WIcnsgnTN82uEnlmQFW9ayILl505yjeg2YS3MOlYjBKR5WPCFvClwdlneMgSL51RG69euL1zzzxrkElVpnbjCkQ.x8pt364FFdT__pDkTdXDLQ");
+	Cypress.Cookies.preserveOnce("next-auth.session-token");
+});
+
 Cypress.Commands.add("loginByGoogleApi", () => {
   cy.log('Logging in to Google')
   

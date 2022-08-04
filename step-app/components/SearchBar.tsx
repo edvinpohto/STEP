@@ -35,6 +35,7 @@ export default function SearchBar() {
 							<Link key={data.eventName.toString()} href={`/events/${data._id}`}>
 								<div 
 								key={data._id} 
+								id="searchedEvent"
 								className='w-full'>
 									<EventCardSearched 
 										eventName={data.eventName}

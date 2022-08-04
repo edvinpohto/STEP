@@ -9,6 +9,7 @@ import EventCardSignedOut from '../../components/EventCards/EventCardSignedOut'
 import { Event } from '../../types/models'
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 import { Spinner } from 'flowbite-react'
+import TestEventCardSignedIn from '../../testHelpers/testComponents/TestEventCardSignedIn'
 
 const Home: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
@@ -40,7 +41,7 @@ const Home: NextPage = ({ properties }: any) => {
             <div 
             key={property._id} 
             className='w-full'>
-              <EventCardSignedIn 
+              <TestEventCardSignedIn 
                 eventName={property.eventName}
                 eventDate={property.eventDate}
                 eventImage={property.eventImage}

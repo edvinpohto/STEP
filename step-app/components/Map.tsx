@@ -57,7 +57,8 @@ export default function Mapbox() {
 				{data && data.map((data: any) => (
           <div 
 						key={data._id} 
-						className='w-full'>
+						className='w-full'
+						id='marker'>
 						<Marker
 							longitude={data.eventLocation[1].lng} 
 							latitude={data.eventLocation[1].lat} 

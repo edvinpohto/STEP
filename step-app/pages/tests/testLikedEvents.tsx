@@ -68,7 +68,8 @@ const LikedEvents: NextPage = ({ properties }: any) => {
 
 export async function getServerSideProps(context: GetServerSideProps | any) {
   const session = await getSession(context) //pass context to authenticate create session
-  const userID = session?.user.id //get id from session
+  // const userID = session?.user.id //get id from session
+  const userID = "62c08363d625f01dca9426cb"
   var todaysDate = new Date(Date.now()).toISOString()
 
   try {

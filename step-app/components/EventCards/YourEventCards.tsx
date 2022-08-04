@@ -27,6 +27,7 @@ export default function YourEventCards(property: Card) {
 				<div className='inline-block float-right mt-1'>
 					{/* Edit event */}
 						<button 
+						id='editButton'
 						className="inline-block mr-3 hover:cursor-pointer">
 							<Link href={`/events/editEvent/${property.eventId}`}>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16">
