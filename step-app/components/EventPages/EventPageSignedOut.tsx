@@ -100,8 +100,9 @@ export default function EventPage(property: Event) {
 							}
 
 							{/* Description */}
-							<div className="rounded-md bg-slate-50 hover:bg-slate-200 mt-3 shadow-md">
-								<div className="text-sm p-3">{property.eventDescription}</div>
+							<div className="rounded-md mt-3 border border-dashed">
+							<div className="text-sm font-semibold pt-2 px-2">Description:</div>
+								<div className="text-sm px-2 pb-2">{property.eventDescription}</div>
 							</div>
 					
 							{/* Privacy */}
