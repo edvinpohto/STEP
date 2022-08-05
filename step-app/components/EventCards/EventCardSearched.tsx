@@ -1,5 +1,3 @@
-import Link from 'next/link'
-import { useState } from 'react'
 import { Card } from '../../types/models'
 import formatDateAndTime from "../../utils/formatDateAndTime"
 import formatLocation from '../../utils/formatLocation'

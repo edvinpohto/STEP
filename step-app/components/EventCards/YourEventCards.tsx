@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { Card } from '../../types/models'
 import deleteEvent from '../../utils/deleteEvent';
 import formatDateAndTime from "../../utils/formatDateAndTime";
-import formatLocation from '../../utils/formatLocation';
 
 export default function YourEventCards(property: Card) {
 	 // Parse date & time into desired form

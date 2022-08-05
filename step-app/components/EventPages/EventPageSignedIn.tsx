@@ -1,5 +1,3 @@
-import { useSession, signIn, signOut } from "next-auth/react"
-import { off } from "process"
 import { useEffect, useState } from "react"
 import { Event } from "../../types/models"
 import checkIfLiked from "../../utils/checkIfLiked"
