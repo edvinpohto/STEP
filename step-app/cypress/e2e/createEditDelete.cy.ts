@@ -6,7 +6,7 @@ describe('Create an event', () => {
 
     // Create the event
     cy.get('#eventName').type('TestEventId1997')
-    cy.get('#eventDate').type('2022-08-05T13:55')
+    cy.get('#eventDate').type('2022-11-05T13:55')
     cy.get('#eventLocation').type('12 Freddie Tait Street, St. Andrews, KY16 8HQ, United Kingdom')
     cy.get('#eventOrganiser').type('Edvin Pohto')
     cy.get('#eventTags').type('tag1, tag2')
