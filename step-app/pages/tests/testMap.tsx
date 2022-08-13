@@ -1,4 +1,6 @@
-import type { GetServerSideProps, NextPage } from 'next'
+// Page for testing the map
+
+import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import Head from 'next/head'
 import NavbarSignedIn from '../../components/Navbars/NavbarSignedIn'

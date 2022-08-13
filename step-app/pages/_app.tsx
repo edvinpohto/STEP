@@ -1,4 +1,3 @@
-// import { Layout } from '../components/Layout'
 import '../styles/globals.css'
 import '../styles/mapbox.css';
 import 'tailwindcss/tailwind.css'
@@ -10,11 +9,9 @@ function MyApp({
   pageProps: {session, ...pageProps},
 }: AppProps) {
   return (
-    // <Layout>
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>
-    // </Layout>
   )
 }
 

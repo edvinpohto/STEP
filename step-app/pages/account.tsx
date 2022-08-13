@@ -1,3 +1,5 @@
+// Account page
+
 import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import Head from 'next/head'

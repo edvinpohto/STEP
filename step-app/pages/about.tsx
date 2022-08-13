@@ -1,3 +1,5 @@
+// About page
+
 import { Spinner } from 'flowbite-react';
 import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react';

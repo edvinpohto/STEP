@@ -1,3 +1,5 @@
+// search functionality is also available as its own page
+
 import { Spinner } from 'flowbite-react'
 import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
@@ -13,7 +15,6 @@ const YourEvents: NextPage = () => {
     return (
       <>
         <NavbarSignedIn />
-        {/* <SearchBar /> */}
         <div className="text-center grid grid-cols-1 place-content-center place-items-center p-5">
           <Spinner aria-label="Center-aligned spinner example" />
         </div>

@@ -1,6 +1,7 @@
+// page for creating an event
+
 import { useSession } from "next-auth/react"
-import type { GetServerSideProps, NextPage } from 'next'
-import { NextResponse } from "next/server";
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import PleaseSignIn from "../components/PleaseSignIn";
 import NavbarSignedIn from "../components/Navbars/NavbarSignedIn";
@@ -26,7 +27,7 @@ const NewEvent: NextPage = () => {
       return (
         <div>
           <Head>
-            <title>Create New Event</title>
+            <title>St Andrews Events Platform</title>
             <link rel="icon" href="/icon_white.ico" />
           </Head>
 

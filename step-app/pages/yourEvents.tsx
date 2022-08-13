@@ -1,3 +1,5 @@
+// Your events page
+
 import type { GetServerSideProps, NextPage } from 'next'
 import { getSession, useSession } from "next-auth/react"
 import Head from 'next/head'

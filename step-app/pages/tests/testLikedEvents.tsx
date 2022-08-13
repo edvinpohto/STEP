@@ -1,3 +1,5 @@
+// Page for testing liked events page
+
 import type { GetServerSideProps, NextPage } from 'next'
 import { getSession, useSession } from "next-auth/react"
 import Head from 'next/head'
@@ -68,14 +70,14 @@ const LikedEvents: NextPage = ({ properties }: any) => {
 
 export async function getServerSideProps(context: GetServerSideProps | any) {
   const session = await getSession(context) //pass context to authenticate create session
-  // const userID = session?.user.id //get id from session
+  // hardcoded user id for test purposes. 
   const userID = "62c08363d625f01dca9426cb"
   var todaysDate = new Date(Date.now()).toISOString()
 
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({ eventDate: { $gt: todaysDate }, eventLikes: `${userID}` }).sort({ eventDate: 1 }).toArray();
+    const events = await db.collection("events").find({ eventDate: { $gte: todaysDate }, eventLikes: `${userID}` }).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {

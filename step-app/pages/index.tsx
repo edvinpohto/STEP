@@ -1,3 +1,5 @@
+// Index/home/feed page for the application
+
 import type { GetServerSideProps, NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import clientPromise from '../lib/mongodb'
@@ -7,7 +9,6 @@ import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
 import EventCardSignedIn from '../components/EventCards/EventCardSignedIn'
 import EventCardSignedOut from '../components/EventCards/EventCardSignedOut'
 import { Event } from '../types/models'
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 import { Spinner } from 'flowbite-react'
 
 const Home: NextPage = ({ properties }: any) => {
@@ -91,7 +92,6 @@ const Home: NextPage = ({ properties }: any) => {
 
 export async function getServerSideProps(context: GetServerSideProps) {
   var todaysDate = new Date(Date.now()).toISOString()
-  console.log(todaysDate)
 
   try {
     const client = await clientPromise

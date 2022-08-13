@@ -1,21 +1,17 @@
+// Page for editing a given event
+
 import type { GetServerSideProps, NextPage } from 'next'
-import { getSession, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import Head from 'next/head'
 import NavbarSignedIn from '../../../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../../../components/Navbars/NavbarSignedOut'
-import YourEventCards from '../../../components/EventCards/YourEventCards'
-import { Card, Event } from '../../../types/models'
 import clientPromise from '../../../lib/mongodb'
 import PleaseSignIn from '../../../components/PleaseSignIn'
-import Intro from '../../../components/YourEventsIntro'
-import { useRouter } from 'next/router'
-import EventPageSignedIn from '../../../components/EventPages/EventPageSignedIn'
-import EventPageSignedOut from '../../../components/EventPages/EventPageSignedOut'
-import { useEffect, useState } from 'react'
 import { ObjectId } from 'mongodb'
 import EditEventForm from '../../../components/EditEventForm'
 
 const EditEvent: NextPage = ({ properties }: any) => {
+  // nextauth session data
   const { data: session, status } = useSession();
   
   if (status === 'loading') {
@@ -66,6 +62,7 @@ const EditEvent: NextPage = ({ properties }: any) => {
         </Head>
   
         <NavbarSignedOut />
+        {/* if a user gets to the page even when no logged in there is a redirect */}
         <PleaseSignIn />
         
       </div>
@@ -73,7 +70,6 @@ const EditEvent: NextPage = ({ properties }: any) => {
 }
 
 export async function getServerSideProps(context: GetServerSideProps | any) {
-  // console.log(context.params.index)
   const eventId = context.params.index
   
   try {

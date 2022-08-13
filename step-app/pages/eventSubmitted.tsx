@@ -1,13 +1,10 @@
-import type { GetServerSideProps, NextPage } from 'next'
+// Page for when an event has been submitted
+
+import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
-import clientPromise from '../lib/mongodb'
 import Head from 'next/head'
 import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import EventCardSignedIn from '../components/EventCards/EventCardSignedIn'
-import EventCardSignedOut from '../components/EventCards/EventCardSignedOut'
-import { Event } from '../types/models'
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 import { Spinner } from 'flowbite-react'
 import Link from 'next/link'
 
@@ -77,8 +74,7 @@ const EventSubmitted: NextPage = () => {
       </Head>
   
       <NavbarSignedOut />
-  
-      
+
     </div>
   )
 }

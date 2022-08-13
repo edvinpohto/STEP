@@ -1,14 +1,13 @@
-import type { GetServerSideProps, NextPage } from 'next'
+// Page for the map. Content not SSR here.
+
+import type { NextPage } from 'next'
 import { useSession } from "next-auth/react"
-import clientPromise from '../lib/mongodb'
 import Head from 'next/head'
 import NavbarSignedIn from '../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../components/Navbars/NavbarSignedOut'
-import { Event } from '../types/models'
-// import Map from '../components/Map'
-
 import dynamic from 'next/dynamic';
 import { Spinner } from 'flowbite-react'
+
 const Map = dynamic(() => import('../components/Map'), {
   ssr: false
 });

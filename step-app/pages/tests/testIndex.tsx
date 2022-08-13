@@ -1,13 +1,13 @@
+// Page for testing the index page
+
 import type { GetServerSideProps, NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import clientPromise from '../../lib/mongodb'
 import Head from 'next/head'
 import NavbarSignedIn from '../../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../../components/Navbars/NavbarSignedOut'
-import EventCardSignedIn from '../../components/EventCards/EventCardSignedIn'
 import EventCardSignedOut from '../../components/EventCards/EventCardSignedOut'
 import { Event } from '../../types/models'
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react'
 import { Spinner } from 'flowbite-react'
 import TestEventCardSignedIn from '../../testHelpers/testComponents/TestEventCardSignedIn'
 
@@ -92,13 +92,12 @@ const Home: NextPage = ({ properties }: any) => {
 
 export async function getServerSideProps(context: GetServerSideProps) {
   var todaysDate = new Date(Date.now()).toISOString()
-  console.log(todaysDate)
 
   try {
     const client = await clientPromise
     const db = client.db("step")
     const events = await db.collection("events").find({
-      eventDate: { $gt: todaysDate }
+      eventDate: { $gte: todaysDate }
     }).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 

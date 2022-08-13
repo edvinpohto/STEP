@@ -1,3 +1,5 @@
+// Page for getting events in general. Same as the base index page
+
 import type { GetServerSideProps, NextPage } from 'next'
 import { useSession } from "next-auth/react"
 import clientPromise from '../../lib/mongodb'
@@ -51,8 +53,6 @@ const Home: NextPage = ({ properties }: any) => {
             </div>
           ))}
         </div>
-
-        {/* <NavbarBottom /> */}
       </div>
     )
   }
@@ -96,7 +96,7 @@ export async function getServerSideProps(context: GetServerSideProps) {
     const client = await clientPromise
     const db = client.db("step")
     const events = await db.collection("events").find({
-      eventDate: { $gt: todaysDate }
+      eventDate: { $gte: todaysDate }
     }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 

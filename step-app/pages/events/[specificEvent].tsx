@@ -1,24 +1,17 @@
+// Page for a specific page
+
 import type { GetServerSideProps, NextPage } from 'next'
-import { getSession, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import Head from 'next/head'
 import NavbarSignedIn from '../../components/Navbars/NavbarSignedIn'
 import NavbarSignedOut from '../../components/Navbars/NavbarSignedOut'
-import YourEventCards from '../../components/EventCards/YourEventCards'
-import { Event } from '../../types/models'
 import clientPromise from '../../lib/mongodb'
-import PleaseSignIn from '../../components/PleaseSignIn'
-import Intro from '../../components/YourEventsIntro'
-import { useRouter } from 'next/router'
 import EventPageSignedIn from '../../components/EventPages/EventPageSignedIn'
 import EventPageSignedOut from '../../components/EventPages/EventPageSignedOut'
-import { useEffect, useState } from 'react'
 import { ObjectId } from 'mongodb'
 
 const SpecificEvent: NextPage = ({ properties }: any) => {
   const { data: session, status } = useSession();
-
-  // console.log(properties[0].eventName)
-  // console.log(properties)
   
   if (status === 'loading') {
     return (
@@ -72,6 +65,7 @@ const SpecificEvent: NextPage = ({ properties }: any) => {
   
         <NavbarSignedOut />
 
+        {/* Signed out user sees the event but cant like it etc */}
         <EventPageSignedOut 
           eventId={properties[0]._id}
           _id={properties[0]._id} 
@@ -93,7 +87,6 @@ const SpecificEvent: NextPage = ({ properties }: any) => {
 }
 
 export async function getServerSideProps(context: GetServerSideProps | any) {
-  console.log(context.params.specificEvent)
   const eventId = context.params.specificEvent
   
   try {
