@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+// Component for a specific event's own page (signed out users)
+
+import { useState } from "react"
 import { Event } from "../../types/models"
 import formatDateAndTime from "../../utils/formatDateAndTime"
 import formatLocation from "../../utils/formatLocation"

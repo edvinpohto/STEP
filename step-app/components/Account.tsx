@@ -1,8 +1,10 @@
+// Component for the account page with info about the user
+
 import { useSession, signOut } from "next-auth/react"
 import deleteAccount from "../utils/deleteAccount";
 
 export default function Account() {
-	const { data: session, status } = useSession();
+	const { data: session } = useSession();
 
 	return(
 		<div className="sm:flex sm:justify-center">
@@ -30,7 +32,6 @@ export default function Account() {
 									Sign out
 								</button>
 							</div>
-							{/* HERE WE NEED TO IMPLEMENT A DELETE ACCOUNT FUNCTION */}
 							<div className="bg-white px-4 py-5 sm:px-6">
 								<button
 									onClick={() => deleteAccount(session?.user.id)}

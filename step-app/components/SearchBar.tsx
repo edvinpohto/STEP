@@ -1,4 +1,7 @@
-import { Dropdown, Label } from "flowbite-react";
+// Component for the search bar
+// Includes the search field itself and fetches results cards component
+// Uses the useFetch custom hook for fetching data based on the slug
+
 import Link from "next/link";
 import useFetch from "../hooks/useFetch";
 import EventCardSearched from "./EventCards/EventCardSearched";

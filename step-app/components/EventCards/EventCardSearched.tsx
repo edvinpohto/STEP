@@ -1,3 +1,5 @@
+// A component for the event cards that come up when using the search/filter functionality
+
 import { Card } from '../../types/models'
 import formatDateAndTime from "../../utils/formatDateAndTime"
 import formatLocation from '../../utils/formatLocation'

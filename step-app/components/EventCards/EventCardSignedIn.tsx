@@ -1,3 +1,6 @@
+// Event card component for the feed of signed in users. 
+// Includes like functionality.
+
 import Link from 'next/link'
 import { useState } from 'react'
 import { Card } from '../../types/models'
@@ -13,14 +16,17 @@ export default function EventCardSignedIn(property: Card) {
 	// Parse location into desired form for card
 	let formattedLocation: string = formatLocation(property.eventLocation[0])
 
+	// React state for whether an event is liked or not
 	const [liked, setLiked] = useState(checkIfLiked(property))
 
+	// Function for liking
 	function onLike() {
 		setLiked(true)
 		// add currentUser to eventLikes array and evenId to likedEvents array
 		likeEvent(property.currentUser, property.eventId)
 	}
 
+	// Function for disliking
 	function onDislike() {
 		const answer = confirm("Are you sure you want to dislike the event?")
 		if (answer) {

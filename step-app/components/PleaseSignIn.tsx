@@ -11,7 +11,6 @@ export default function PleaseSignIn() {
       </Head>
 
       <div className="grid grid-cols-1 w-full place-items-center mt-4">
-        {/* <div className="grid w-5/6 place-content-center m-5 rounded-b-lg shadow-lg hover:shadow-xl sm:w-128"> */}
           <div className='content-center'>
             <h1>Welcome to the page</h1>
           </div>
@@ -22,7 +21,6 @@ export default function PleaseSignIn() {
             <button id="signInButton" onClick={() => signInRedirect(undefined, { callbackUrl: '/'})} className="px-4 py-1 text-sm text-sky-600 font-semibold rounded-full border border-sky-200 hover:text-white hover:bg-sky-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">Sign in</button>
           </div>
         </div>
-      {/* </div> */}
     </div>
   )
 }

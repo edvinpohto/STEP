@@ -1,35 +1,22 @@
+// Component implementing the Mapbox map.
 // Help for individual popups https://stackoverflow.com/questions/60997591/mapbox-marker-popups-wont-open-close-individually
 
-// import * as React from 'react';
 import Map, { Marker, Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Event } from '../types/models'
 import { useEffect, useState } from 'react';
 import formatDateAndTime from '../utils/formatDateAndTime';
 import formatLocation from '../utils/formatLocation';
 import Link from 'next/link';
 
-const locations = [
-	{ eventName: "test1",
-		lat: 56.3297648,
-		lng: -2.7954401,
-		_id: "62cd879aacf5dd9c5047cdad"
-	}, 
-	{ eventName: "test2",
-		lat: 56.340226,
-		lng: -2.7920074,
-		_id: "62cd87bcacf5dd9c5047cdae"
-	}
-]
-
-// export default function Mapbox(property: { lat: number | undefined; lng: number | undefined; _id: React.Key | null | undefined; }) {
 export default function Mapbox() {
 	const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN
 
+	// states for the map
 	const [data, setData] = useState<any[]>([])
   const [isLoading, setLoading] = useState(false)
 	const [showPopup, setShowPopup] = useState<any>({})
 
+	// gets events
 	useEffect(() => {
     setLoading(true)
     fetch('/api/events')
@@ -51,7 +38,6 @@ export default function Mapbox() {
 					style={{width: '100vw', height: '100vh'}}
 					mapStyle="mapbox://styles/mapbox/streets-v9"
 					mapboxAccessToken={MAPBOX_TOKEN}
-					// cursor="pointer"
 				>
 
 				{data && data.map((data: any) => (
@@ -76,7 +62,6 @@ export default function Mapbox() {
 								className='w-full p-0'
 								key={data._id} 
 								closeOnClick={false} 
-								// captureClick={true}
 								longitude={data.eventLocation[1].lng} 
 								latitude={data.eventLocation[1].lat}
 								anchor="bottom"

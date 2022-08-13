@@ -3,13 +3,6 @@ import useInput from "../hooks/useInput";
 import handleSubmit from "../utils/submitForm";
 import axios from "axios";
 
-interface CurrentUser {
-  name: string;
-  email: string;
-	image: string;
-	id: string;
-}
-
 interface Result {
   center: number[];
   place_name: string;
@@ -24,7 +17,7 @@ export default function EventForm() {
   // For location picker
   const address: any = useInput("");
 
-  // For image uploader
+  // States for image uploader
   const [file, setFile] = useState<any>();
   const [uploadingStatus, setUploadingStatus] = useState<any>();
   const [uploadedFile, setUploadedFile] = useState<any>();
@@ -33,6 +26,7 @@ export default function EventForm() {
     setFile(e.target.files[0]);
   };
 
+  // Uploads image to S3
   const uploadFile = async () => {
     setUploadingStatus("Uploading the file to AWS S3");
 
@@ -69,7 +63,6 @@ export default function EventForm() {
 
 				{/* Basic HTML Form */}
 				<div className="sm:flex sm:justify-center">
-          {/* <form action="#" method="POST"> */}
           <form onSubmit={handleSubmit}>
             <div className="">
               <div className="px-4 py-5 space-y-6">
@@ -102,7 +95,6 @@ export default function EventForm() {
                   </div>
 
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
-                  {/* To get the location as coordinates: https://docs.mapbox.com/api/search/geocoding/ */}
                   <div className="mt-2 col-span-6 sm:col-span-4">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-gray-700">
                       Location*
@@ -113,10 +105,8 @@ export default function EventForm() {
                       type="text"
                       name="eventLocation"
                       id="eventLocation"
-                      // autoComplete="location"
                       placeholder="Address"
                       {...address}
-                      // isTyping={address.value !== ""}
                     />
                     {address.suggestions?.length > 0 && (
                       <div className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -320,18 +310,11 @@ export default function EventForm() {
                             name="eventImage" 
                             type="file" 
                             onChange={(e) => selectFile(e)}
-                            // className="sr-only" 
                             title={file && file.name}
                           />
                           {file && (
                             <>
                               <p>Selected file: {file.name}</p>
-                              {/* <button
-                                onClick={uploadFile}
-                                className=" bg-purple-500 text-white p-2 rounded-sm shadow-md hover:bg-purple-700 transition-all"
-                              >
-                                Upload a File!
-                              </button> */}
                             </>
                           )}
                         </label>

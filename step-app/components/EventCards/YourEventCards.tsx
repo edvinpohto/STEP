@@ -1,3 +1,5 @@
+// Event card component for the your events page. 
+
 import Link from 'next/link';
 import { Card } from '../../types/models'
 import deleteEvent from '../../utils/deleteEvent';
@@ -49,9 +51,4 @@ export default function YourEventCards(property: Card) {
 			</div>
 		</div>
 	)
-}
-
-
-function test() {
-  console.log("It works")
 }

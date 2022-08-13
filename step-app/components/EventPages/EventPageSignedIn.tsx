@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+// Component for a specific event's own page (signed in users)
+
+import { useState } from "react"
 import { Event } from "../../types/models"
 import checkIfLiked from "../../utils/checkIfLiked"
 import dislikeEvent from "../../utils/dislikeEvent"
@@ -158,7 +160,3 @@ export default function EventPage(property: Event) {
 		</>
 	)
 }
-
-// Event params left to use:
-// - likes number of
-// - 

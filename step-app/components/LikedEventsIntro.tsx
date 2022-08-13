@@ -1,3 +1,5 @@
+// Intro section to the liked events page
+
 export default function Intro() {
   return(
     <div className="sm:flex sm:justify-center">

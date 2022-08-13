@@ -1,11 +1,12 @@
+// Navbar component used across the app for signed out users
+
 // Component from https://tailwindui.com/components/application-ui/navigation/navbars
 
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline'
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import signInRedirect from '../../utils/signInRedirect'
-import SearchBar from '../SearchBar'
 import SearchModal from '../SearchModal'
 
 const navigation = [
@@ -99,14 +100,6 @@ export default function NavbarSignedOut() {
                               Sign in
                             </button>
                           )}
-                          {/* {({ active }) => (
-                            <a
-                              href="/api/auth/signin"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Sign in
-                            </a>
-                          )} */}
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>

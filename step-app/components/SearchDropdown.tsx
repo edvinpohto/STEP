@@ -1,4 +1,5 @@
-import { Dropdown, Label } from "flowbite-react";
+// Component for the user type filtering in the search menu
+
 import Link from "next/link";
 import useFetch from "../hooks/useFetch";
 import EventCardSearched from "./EventCards/EventCardSearched";
@@ -8,7 +9,6 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 
 export default function SearchBar() {
 	const { data, setData } = useFetch();
-	// console.log(data)
 	
 	return (
 		<div className="mt-2">

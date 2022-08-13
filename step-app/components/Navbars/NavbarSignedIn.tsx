@@ -1,10 +1,12 @@
+// Navbar component used across the app for signed in users
+
 // Component from https://tailwindui.com/components/application-ui/navigation/navbars
 // Search bar from https://headlessui.com/react/dialog
 // Search box from https://flowbite.com/docs/forms/search-input/ 
 
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon, SearchIcon } from '@heroicons/react/outline'
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import signOutRedirect from '../../utils/signOutRedirect'
 import SearchModal from '../SearchModal'
@@ -77,11 +79,6 @@ export default function NavbarSignedIn() {
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
-                      {/* <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      /> */}
                       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" className="bi bi-person" viewBox="0 0 16 16">
                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                       </svg>
@@ -148,16 +145,6 @@ export default function NavbarSignedIn() {
                           </button>
                         )}
                       </Menu.Item>
-                      {/* <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/api/auth/signout"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item> */}
                     </Menu.Items>
                   </Transition>
                 </Menu>

@@ -1,3 +1,5 @@
+// Introduction section for the your events page
+
 export default function Intro() {
   return(
 		<div className="sm:flex sm:justify-center">

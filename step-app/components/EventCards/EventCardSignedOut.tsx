@@ -1,3 +1,6 @@
+// Event card component for the feed of signed out users. 
+// Redirects to login upon liking an event.
+
 import { Card } from '../../types/models'
 import signInRedirect from "../../utils/signInRedirect"
 import formatDateAndTime from "../../utils/formatDateAndTime";
