@@ -1,3 +1,5 @@
+// Custom hook for getting suggestions for the location input box
+
 // Source: https://designcode.io/react-hooks-handbook-geocoding-mapbox 
 
 import { useState } from "react";

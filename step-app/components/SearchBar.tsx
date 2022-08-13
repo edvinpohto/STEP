@@ -8,7 +8,7 @@ import EventCardSearched from "./EventCards/EventCardSearched";
 
 export default function SearchBar() {
 	const { data, setData } = useFetch();
-	console.log(data)
+	// console.log(data)
 	
 	return (
 		<div className="mt-2">
