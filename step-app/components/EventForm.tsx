@@ -95,7 +95,7 @@ export default function EventForm() {
                   </div>
 
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
-                  <div className="mt-2 col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4 sm:max-w-xs">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-gray-700">
                       Location*
                     </label>
@@ -106,6 +106,7 @@ export default function EventForm() {
                       name="eventLocation"
                       id="eventLocation"
                       placeholder="Address"
+                      autocomplete="off"
                       {...address}
                     />
                     {address.suggestions?.length > 0 && (

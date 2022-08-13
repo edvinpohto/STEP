@@ -80,7 +80,7 @@ export default function EventPage(property: Event) {
 
 						{/* Event name */}
 						<div className="pt-4 sm:px-6">
-							<h3 className="text-lg leading-6 font-medium text-gray-900">{property.eventName}</h3>
+							<h3 className="text-lg leading-6 font-medium text-gray-900 mr-8">{property.eventName}</h3>
 
 							{/* Likes */}
 							{likes > 0 &&

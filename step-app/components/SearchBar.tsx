@@ -35,7 +35,7 @@ export default function SearchBar() {
 					? 
 					<div className='grid sm:justify-center'>
 						{data.results.events && data.results.events.map((data: any) => (
-							<Link key={data.eventName.toString()} href={`/events/${data._id}`}>
+							<Link key={data.eventName.toString()} href={`/events/${data._id}/`}>
 								<div 
 								key={data._id} 
 								id="searchedEvent"
