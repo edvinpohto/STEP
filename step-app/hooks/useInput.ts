@@ -1,3 +1,5 @@
+// Source: https://designcode.io/react-hooks-handbook-geocoding-mapbox 
+
 import { useState } from "react";
 
 const useInput = (initialValue: any) => {

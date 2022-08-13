@@ -1,3 +1,5 @@
+// Guide to building search hook here: https://dev.to/franciscomendes10866/how-to-create-a-search-bar-in-react-58nj
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 

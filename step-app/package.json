@@ -49,6 +49,7 @@
     "@types/react-geocode": "^0.2.1",
     "autoprefixer": "^10.4.7",
     "cypress": "^10.3.0",
+    "cypress-mochawesome-reporter": "^3.2.2",
     "cypress-social-logins": "^1.14.0",
     "eslint": "8.17.0",
     "eslint-config-next": "^0.2.4",
