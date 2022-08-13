@@ -5,6 +5,7 @@ import clientPromise from "../../../lib/mongodb"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
+import FacebookProvider from 'next-auth/providers/facebook'
 
 export default NextAuth({
 
@@ -20,6 +21,10 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_ID as string,
+      clientSecret: process.env.FACEBOOK_SECRET as string
+})
   ],
 
   // The secret should be set to a reasonably long random string.
