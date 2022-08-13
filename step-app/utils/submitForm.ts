@@ -1,3 +1,6 @@
+// Util function to submit an event
+// makes an api call to the backend 
+
 import { getSession } from "next-auth/react"
 import { tagsToArray } from "../utils/tagsToArray"
 import addressToCoordinates from '../utils/geocode'
@@ -17,14 +20,12 @@ export default async function handleSubmit(e: any) {
   e.preventDefault()
 
   const session = await getSession();
-  // console.log(session?.user)
+
   let userData: CurrentUser = session?.user
 
   // Parse the tags from the form into an array of tags
   let tags: string = e.target.eventTags.value
-  // console.log("Tags:", tags)
   let formattedTags: string[] = tagsToArray(tags)
-  // console.log("Array of tags:", formattedTags)
 
   // Get image name and build address for image retrieval
   const imageName = e.target.eventImage.title;

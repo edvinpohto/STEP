@@ -1,3 +1,6 @@
+// Util function to slice up the date and time string from the database
+// and return a spruced up version
+
 export default function formatDateAndTime(data: string) {
   let day: string = data.slice(8,10)
   let month: string = data.slice(5,7)

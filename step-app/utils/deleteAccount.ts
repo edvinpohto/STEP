@@ -1,3 +1,5 @@
+// Function that makes an API call to the backend to delete an account
+
 import signOutRedirect from "./signOutRedirect"
 
 export default async function deleteEvent(userId: string) {

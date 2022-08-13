@@ -1,3 +1,6 @@
+// Util function to like an event
+// makes an api call to the backend 
+
 export default async function likeEvent(currentUser: string, eventId: string) {
 
   const data = {

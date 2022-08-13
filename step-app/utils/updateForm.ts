@@ -1,13 +1,8 @@
-import { getSession } from "next-auth/react"
+// Util function to update an event
+// makes an api call to the backend 
+
 import { tagsToArray } from "../utils/tagsToArray"
 import addressToCoordinates from '../utils/geocode'
-
-interface CurrentUser {
-  name: string;
-  email: string;
-	image: string;
-	id: string;
-}
 
 const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/"
 

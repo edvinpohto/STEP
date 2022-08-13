@@ -1,5 +1,4 @@
-import { getSession } from "next-auth/react";
-import { CurrentUser } from "../types/models";
+// Function that makes an API call to the backend to delete an event
 
 export default async function deleteEvent(eventId: string, userId: string) {
   const confirmation = confirm("Are you sure you want to delete the event?")

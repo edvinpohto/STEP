@@ -1,3 +1,5 @@
+// General type interface source file
+
 export interface Event {
     _id: string;
     eventId: string;

@@ -16,6 +16,7 @@ export default async function handleSubmit(e: any) {
   e.preventDefault()
 
   // console.log(session?.user)
+  // a test user hardcoded for test purposes
   let userData: CurrentUser = {
     name: "Edvin Pohto",
     email: "pohto.edvin@gmail.com",

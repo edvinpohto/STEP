@@ -1,3 +1,6 @@
+// Util function to dislike an event
+// makes an api call to the backend 
+
 export default async function dislikeEvent(currentUser: string, eventId: string) {
 
   const data = {
