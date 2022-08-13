@@ -346,8 +346,7 @@ export default function EventForm(property: any) {
                         {uploadedFile && <img src={uploadedFile} />}
                       </div>
                       {/* Note */}
-                      <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                      <p className="text-xs text-gray-500">Images are cropped to a 2x3 aspect ratio.</p>
+                      <p className="text-xs text-gray-500">PNG, JPG, GIF, and more, up to 10MB</p>
                     </div>
                   </div>
                 </div>

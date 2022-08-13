@@ -97,7 +97,7 @@ export async function getServerSideProps(context: GetServerSideProps) {
     const client = await clientPromise
     const db = client.db("step")
     const events = await db.collection("events").find({
-      eventDate: { $gt: todaysDate }
+      eventDate: { $gte: todaysDate }
     }).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 

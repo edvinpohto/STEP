@@ -1,3 +1,6 @@
+// API endpoint for uploading event image to amazon s3
+// Guide found in the AWS tutorials for setting up s3
+
 import { NextApiRequest, NextApiResponse } from "next";
 import S3 from "aws-sdk/clients/s3";
 
@@ -36,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: "8mb", // Set desired value here
+      sizeLimit: "10mb", // Set desired value here
     },
   },
 };

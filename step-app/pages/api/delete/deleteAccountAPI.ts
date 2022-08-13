@@ -1,3 +1,5 @@
+// API endpoint for deleting an account
+
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../../lib/mongodb";
 

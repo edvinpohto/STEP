@@ -74,7 +74,7 @@ export async function getServerSideProps(context: GetServerSideProps | any) {
   try {
     const client = await clientPromise
     const db = client.db("step")
-    const events = await db.collection("events").find({ eventDate: { $gt: todaysDate }, "currentUser.id": `${userID}` }).sort({ eventDate: 1 }).toArray();
+    const events = await db.collection("events").find({ eventDate: { $gte: todaysDate }, "currentUser.id": `${userID}` }).sort({ eventDate: 1 }).toArray();
     const properties = JSON.parse(JSON.stringify(events));
 
     return {

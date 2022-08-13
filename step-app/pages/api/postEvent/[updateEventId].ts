@@ -1,3 +1,5 @@
+// API endpoint for updating a specific event
+
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../../lib/mongodb";
 
@@ -24,6 +26,7 @@ export default async function handler(
 		`Event received with name: ${body.eventName}` 
 	})
 
+	// gets the event id from the reqs
 	const { updateEventId } = req.query
 
 	try {
@@ -55,9 +58,6 @@ export default async function handler(
       `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`
     );
 
-		// If the client is closed then there will be an error if someone tries to submit many events
-		// But is there a problem if the client is not closed?
-		// await client.close();
 	} catch(error) {
 		throw(error)
 	}

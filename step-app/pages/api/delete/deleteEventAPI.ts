@@ -1,3 +1,5 @@
+// API endpoint for deleting an event
+
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../../lib/mongodb";
 

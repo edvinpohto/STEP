@@ -1,3 +1,5 @@
+// API endpoint for disliking an event
+
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../../lib/mongodb";
 
@@ -48,9 +50,6 @@ export default async function handler(
 
 		console.log(`eventLikes and likedEvents arrays were updated with event and user ids`);
 
-		// If the client is closed then there will be an error if someone tries to submit many events
-		// But is there a problem if the client is not closed?
-		// await client.close();
 	} catch(error) {
 		throw(error)
 	}

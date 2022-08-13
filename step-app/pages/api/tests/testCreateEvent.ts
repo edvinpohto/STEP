@@ -1,3 +1,5 @@
+// API endpoint for testing creating an event
+
 import { NextApiRequest, NextApiResponse } from "next";
 import clientPromise from "../../../lib/mongodb";
 
@@ -45,9 +47,6 @@ export default async function handler(
 		const result = await events.insertOne(body);
 		console.log(`A document was inserted with the _id: ${result.insertedId}`);
 
-		// If the client is closed then there will be an error if someone tries to submit many events
-		// But is there a problem if the client is not closed?
-		// await client.close();
 	} catch(error) {
 		throw(error)
 	}
