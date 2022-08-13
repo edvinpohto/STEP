@@ -1,3 +1,5 @@
+// Test for using the search functionality
+
 describe('Search for an event and navigate to it', () => {
   it('Opens the search modal and searches for an event', () => {
     cy.visit('/')

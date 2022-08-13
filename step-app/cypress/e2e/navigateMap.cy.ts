@@ -1,3 +1,5 @@
+// Test for navigating the map page
+
 describe('Navigate the map', () => {
   it('Opens the map page and directs to an event on the page', () => {
     cy.visit('/tests/testMap')

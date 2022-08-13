@@ -1,3 +1,5 @@
+// Test fot overall navigation around the site
+
 describe('Navigation', () => {
   it('should navigate through the pages available', () => {
     cy.visit('/')

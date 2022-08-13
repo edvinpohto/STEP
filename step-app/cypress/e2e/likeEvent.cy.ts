@@ -1,4 +1,4 @@
-import { waitForDebugger } from "inspector";
+// Test for liking an event
 
 describe('Like an event', () => {
   it('Visits the feed page and likes an event', () => {
@@ -14,6 +14,7 @@ describe('Like an event', () => {
     cy.get('#likeButton').click()
     cy.wait(1000)
 
+    // Checks whether the liked event is in the liked events section
     cy.visit('/tests/testLikedEvents')
     cy.contains('Organiser: Edvin Pohto')
   })

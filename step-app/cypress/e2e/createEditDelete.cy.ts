@@ -1,3 +1,5 @@
+// Test for creating, editing, and deleting an event
+
 // Guide from here https://www.lambdatest.com/blog/fill-and-submit-forms-in-cypress/
 
 describe('Create an event', () => {
@@ -16,6 +18,7 @@ describe('Create an event', () => {
     cy.get('#eventDuration').type('1')
     cy.get('#eventDescription').type('Lorem Ipsum')
 
+    // adds image
     const filePath='1.jpg'
     cy.get('#eventImage').attachFile(filePath)
     cy.get('#submit').click()
