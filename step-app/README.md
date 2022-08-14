@@ -1,4 +1,4 @@
-![Image](https://step-event-images.s3.eu-west-2.amazonaws.com/blacklogo.png)
+![Image](https://step-event-images.s3.eu-west-2.amazonaws.com/whitelogo.png)
 
 Welcome to the St Andrews Events Platform (STEP) project! This project was built by Edvin Pohto as a master's dissertation project at the University of St Andrews. STEP is a local and small-scale events application designed for the local St Andrews community. Below is a guide on how to set up and run the project.
 
