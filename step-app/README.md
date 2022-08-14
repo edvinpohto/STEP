@@ -1,34 +1,53 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+Welcome to the St Andrews Events Platform (STEP) project! This project was built by Edvin Pohto as a master's dissertation project at the University of St Andrews. STEP is a local and small-scale events application designed for the local St Andrews community. Below is a guide on how to set up and run the project.
 
-The application uses a MongoDB database, hosted locally during development, for persistent storage.
-To start working with the application, MongoDB needs to be configured on your work station.
+## Prerequisites
 
-A guide for setting up MongoDB can be found here: https://www.prisma.io/dataguide/mongodb/setting-up-a-local-mongodb-database
+In order to run the STEP application on your computer, TypeScript and Node.js need to be installed, and MongoDB needs to be installed and set up to host the database locally. Guides to each installation are found below: 
 
-To then set up the dependencies of the project, run npm install in a terminal while in the /step-app folder.
+- Node.js 12.22.0 or later - this is needed to install TypeScript via npm as well. Download and install it by following the guide [`here`](https://nodejs.org/en/download/package-manager/).
+- TypeScript (version 4.7.3 used for development) - you can install it by running `npm install typescript --save-dev` in your terminal, or by following the guide [`here`](https://www.typescriptlang.org/download).
+- MongoDB Community Edition (version 4.7.0 used for development) - a guide for this process can be found [`here`](https://www.mongodb.com/docs/manual/administration/install-community/) (choose your operating system and follow the guide).
 
-Finally, to run the development server:
+With the prerequisites installed, you need to make sure that the local environmental variables are filled in correctly. The submitted `.env.local` file should include everything needed but this is good to double check. During development, the used MongoDB database name was `step`, which is also what the pre-filled `.env.local` file is configured to. For everything to work correctly, make sure the `MONGODB_DB` variable is set to the correct database name, and that `MONGODB_URI` is also correct. The default for this is `MONGODB_URI=mongodb://localhost:27017/step`. If you acquired this project via GitHub, the `.env.local` file will not exist and you will have to fill in and add the following template to your root folder:
 
-```bash
-npm run dev
-# or
-yarn dev
 ```
-while navigated into the /step-app folder.
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+SECRET=
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+FACEBOOK_ID=
+FACEBOOK_SECRET=
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+GITHUB_ID=
+GITHUB_SECRET=
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GOOGLE_REFRESH_TOKEN=
 
-## Learn More
+MONGODB_URI=
+MONGODB_DB=
 
-To learn more about Next.js, take a look at the following resources:
+NODE_ENV=development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NEXT_PUBLIC_MAPBOX_GL_ACCESS_TOKEN=
+
+S3_ACCESS_KEY=
+S3_SECRET_KEY=
+S3_BUCKET_NAME=
+```
+
+Next, the relevant dependencies need to be installed. Open a new terminal session in the project folder (`./step-app/`). Once in the project folder, run `npm install`. 
+
+`Before running the project, you can run `insert something here` to populate your local database with mock data.` 
+
+You are now ready to run the project. To first build the project, run `npm run build` in the `./step-app/` folder. To then start the built project server run `npm run start`. Now navigate to `http://localhost:3000` to start browsing the project. If you want to run the development server, you can instead simply run `npm run dev` and navigate to `http://localhost:3000` again.
+
+Finally, in order to run the testing program Cypress, you need to start the development server with `npm run dev` from the `./step-app/` folder and leave that running. Open up a new terminal session in the same folder and run `npm run cypress`. Cypress now opens up and you can head over to End-2-End testing and run any of the tests. There is one thing that may or may not have to be updated for some of the tests to work properly. In the `step-app\cypress\support\commands.ts` file, on line 14, there is a `next-auth.session-token` that needs to be valid from one's browser session. This token was set to a functioning one during development, but it may have to be updated. If this is the case, a valid session token can be found in one's browser, as shown below.
+
+![Image](https://user-images.githubusercontent.com/1148334/129594225-ed905897-f3bd-4137-a71d-f452f4b87e1c.png)
+
+
