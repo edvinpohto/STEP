@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Image](https://step-event-images.s3.eu-west-2.amazonaws.com/blacklogo.png)
 
 Welcome to the St Andrews Events Platform (STEP) project! This project was built by Edvin Pohto as a master's dissertation project at the University of St Andrews. STEP is a local and small-scale events application designed for the local St Andrews community. Below is a guide on how to set up and run the project.
 
@@ -42,7 +42,7 @@ S3_BUCKET_NAME=
 
 Next, the relevant dependencies need to be installed. Open a new terminal session in the project folder (`./step-app/`). Once in the project folder, run `npm install`. 
 
-`Before running the project, you can run `insert something here` to populate your local database with mock data.` 
+To make the application truly functional, data is needed. To import data into the MongoDB database, MongoDB's Database Tool `mongoimport` is used. If your operating system is MacOS or Linux, there is a high likelihood you already have the MongoDB Database Tools installed. If not, however, or if you are a Windows user, the guide to installing the tools can be found [here](https://www.mongodb.com/docs/database-tools/installation/installation-windows/). Now, using a your terminal and in the `./step-app/` project directory, run `mongoimport --db=step --collection=events --file=data/events.json`. This command assumes your default port being 27017. It creates a new database by the name of `step`, a new collection by the name of `events` and populates it with data from the `data/events.json` file. If more guidance is needed, it can be found [here](https://www.mongodb.com/docs/database-tools/mongoimport/).
 
 You are now ready to run the project. To first build the project, run `npm run build` in the `./step-app/` folder. To then start the built project server run `npm run start`. Now navigate to `http://localhost:3000` to start browsing the project. If you want to run the development server, you can instead simply run `npm run dev` and navigate to `http://localhost:3000` again.
 
