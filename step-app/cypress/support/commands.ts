@@ -1,40 +1,5 @@
 /// <reference types="cypress" />
 // ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
 
 import 'cypress-file-upload'
 
@@ -44,10 +9,12 @@ Cypress.Commands.add("login", () => {
 
 	// Set the cookie for cypress.
 	// It has to be a valid cookie so next-auth can decrypt it and confirm its validity.
+  // This session token may need to be refreshed at some point. Follow the link above for the guide where to find that.
 	cy.setCookie("next-auth.session-token", "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..CaLUqsxSc_qK1F7N.jXNKNrjlDwgg8tDOVXXTQsbdUe7XjD-RLGC6cbtxAHTArVl3OlCiCKuPGT5-o5sAsYj7OXWGUUTZXy9JGTwWLVFifLTLI-05KAqZm9Y3D_r03gu93E8aX4vkrO31-0NVBMr5-F6obHMrSg96fpU-GBedVkBg0tc-fYZKMsNaVrFpI4MOvkpd1goCRio0PE-CvWN4NzJSAJVDuIEtO7ogdruZdZfoXeBz6XSAy3iiYofjE2uUpIEbRu-3kT5lqZ1o-1nm6mQqZdG9Fa6WIcnsgnTN82uEnlmQFW9ayILl505yjeg2YS3MOlYjBKR5WPCFvClwdlneMgSL51RG69euL1zzzxrkElVpnbjCkQ.x8pt364FFdT__pDkTdXDLQ");
 	Cypress.Cookies.preserveOnce("next-auth.session-token");
 });
 
+// Login by google command
 Cypress.Commands.add("loginByGoogleApi", () => {
   cy.log('Logging in to Google')
   
