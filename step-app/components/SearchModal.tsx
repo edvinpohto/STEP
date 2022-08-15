@@ -18,6 +18,8 @@ export default function SearchModal() {
     setIsOpen(false)
   }
 
+  // Guide for how to pass props down to child components
+  // https://www.freecodecamp.org/news/pass-data-between-components-in-react/
   const closeModalForChild = (childdata: boolean) => {
     setIsOpen(childdata)
   }

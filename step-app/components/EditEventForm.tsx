@@ -22,6 +22,9 @@ export default function EventForm(property: any) {
   // For location picker
   const address: any = useInput("");
 
+  // Privacy checkbox true or false
+  const [privacy, setPrivacy] = useState(property.eventPrivacy);
+
   // States for image uploader
   const [file, setFile] = useState<any>();
   const [uploadingStatus, setUploadingStatus] = useState<any>();
@@ -180,12 +183,13 @@ export default function EventForm(property: any) {
                     <label htmlFor="eventPrivacy" className="text-sm font-medium text-gray-700">
                       Privacy
                     </label>
-                    <p className="text-sm text-rose-700">Please re-communicate or change your privacy preference</p>
                     <p className="text-sm text-gray-500">
                       Tick the checkbox if your event is private.
                     </p>
                     
                     <input
+                      defaultChecked={privacy}
+                      onChange={() => setPrivacy(!privacy)}
                       type="checkbox"
                       name="eventPrivacy"
                       id="eventPrivacy"
