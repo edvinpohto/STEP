@@ -6,7 +6,8 @@ import Link from "next/link";
 import useFetch from "../hooks/useFetch";
 import EventCardSearched from "./EventCards/EventCardSearched";
 
-export default function SearchBar() {
+export default function SearchBar( {closeModalForChild}: any ) {
+	const modalData = false;
 	const { data, setData } = useFetch();
 	// console.log(data)
 	
@@ -37,6 +38,7 @@ export default function SearchBar() {
 						{data.results.events && data.results.events.map((data: any) => (
 							<Link key={data.eventName.toString()} href={`/events/${data._id}/`}>
 								<div 
+								onClick={() => closeModalForChild(modalData)}
 								key={data._id} 
 								id="searchedEvent"
 								className='w-full'>

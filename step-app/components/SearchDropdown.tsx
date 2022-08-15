@@ -7,7 +7,8 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
-export default function SearchBar() {
+export default function SearchBar( {closeModalForChild}: any ) {
+  const modalData = false;
 	const { data, setData } = useFetch();
 	
 	return (
@@ -95,6 +96,7 @@ export default function SearchBar() {
 						{data.results.events && data.results.events.map((data: any) => (
 							<Link key={data.eventName.toString()} href={`/events/${data._id}`}>
 								<div 
+                onClick={() => closeModalForChild(modalData)}
 								key={data._id} 
 								className='w-full'>
 									<EventCardSearched 

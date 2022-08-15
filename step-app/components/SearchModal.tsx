@@ -18,6 +18,10 @@ export default function SearchModal() {
     setIsOpen(false)
   }
 
+  const closeModalForChild = (childdata: boolean) => {
+    setIsOpen(childdata)
+  }
+
   function openModal() {
     setIsOpen(true)
   }
@@ -114,10 +118,10 @@ export default function SearchModal() {
                     <div className="">
                       {typeSearchState === false 
                       ? <div className="">
-                          <SearchBar />
+                          <SearchBar closeModalForChild={closeModalForChild}/>
                         </div>
                       : <div className="">
-                          <SearchDropdown />
+                          <SearchDropdown closeModalForChild={closeModalForChild}/>
                         </div>  
                       }
                     </div>
