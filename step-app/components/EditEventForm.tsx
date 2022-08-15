@@ -20,7 +20,7 @@ const BUCKET_URL = "https://step-event-images.s3.eu-west-2.amazonaws.com/";
 export default function EventForm(property: any) {
 
   // For location picker
-  const address: any = useInput("");
+  const address: any = useInput(property.eventLocation[0]);
 
   // Privacy checkbox true or false
   const [privacy, setPrivacy] = useState(property.eventPrivacy);
@@ -116,11 +116,10 @@ export default function EventForm(property: any) {
                   </div>
 
                   {/* Mapbox: https://designcode.io/react-hooks-handbook-geocoding-mapbox */}
-                  <div className="mt-2 col-span-6 sm:col-span-4">
+                  <div className="mt-2 col-span-6 sm:col-span-4 sm:max-w-xs">
                     <label htmlFor="eventLocation" className="block text-sm font-medium text-gray-700">
                       Location*
                     </label>
-                    <p className="text-sm text-rose-700">Please re-enter or change the event location</p>
                     <input
                       required 
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
