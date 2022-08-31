@@ -86,7 +86,7 @@ const SpecificEvent: NextPage = ({ properties }: any) => {
 }
 
 export async function getServerSideProps(context: GetServerSideProps | any) {
-  console.log(context.params.testSpecificEvent)
+  // console.log(context.params.testSpecificEvent)
   const eventId = context.params.testSpecificEvent
   
   try {

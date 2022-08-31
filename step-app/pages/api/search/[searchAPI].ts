@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   
   const { searchAPI } = req.query
-  console.log(searchAPI)
+  // console.log(searchAPI)
 
   const client = await clientPromise
   const db = client.db("step")

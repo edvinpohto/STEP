@@ -41,7 +41,7 @@ export default function EventForm() {
       type: file.type,
     });
 
-    console.log(data);
+    // console.log(data);
 
     const url = data.url;
     let { data: newData } = await axios.put(url, file, {

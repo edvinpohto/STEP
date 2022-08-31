@@ -15,7 +15,7 @@ export default function EventPage(property: Event) {
 	const [liked, setLiked] = useState(checkIfLiked(property))
 	const [likes, setLikes] = useState(property.eventLikes.length)
 
-	console.log(property.currentUser)
+	// console.log(property.currentUser)
 
 	function onLike() {
 		setLiked(true)
