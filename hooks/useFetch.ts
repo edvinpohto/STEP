@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const BaseUrl = axios.create({
-  baseURL: "https://www.step-lime.vercel.app/",
+  baseURL: "https://step-lime.vercel.app/",
 });
 
 const useFetch = () => {
@@ -23,7 +23,7 @@ const useFetch = () => {
         const fetch = async () => {
           try {
             // console.log("From useFetch", data.slug)
-            const res = await BaseUrl.get(`api/search/${data.slug}`);
+            const res = await BaseUrl.get(`api/search/${data.slug}/`);
             // console.log("Res from useFetch", res)
             setData({ ...data, results: res.data });
           } catch (err) {
