@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const BaseUrl = axios.create({
-  baseURL: "http://step-lime.vercel.app/",
+  baseURL: "https://step-lime.vercel.app/",
 });
 
 const useFetch = () => {

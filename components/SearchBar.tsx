@@ -13,7 +13,7 @@ export default function SearchBar( {closeModalForChild}: any ) {
 	
 	return (
 		<div className="mt-2">
-			{/* <form>    */}
+			{/* <form> */}
 				<label htmlFor="eventSearch" className="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
 				<div className="relative">
 						<div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
