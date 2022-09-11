@@ -18,7 +18,8 @@ export default async function handler(
   // db.collection("events").dropIndex("eventName_text_eventDate_text_eventLocation_text_eventDescription_text_eventOrganiser_text_eventTags_text_eventType_text$$$")
 
   // searchable data in documents/collections
-  db.collection("events").createIndex({ 
+  db.collection("events").createIndex(
+    { 
     eventName: "text", 
     eventDate: "text", 
     eventLocation: "text", 
@@ -26,7 +27,11 @@ export default async function handler(
     eventOrganiser: "text",
     eventTags: "text",
     eventType: "text"
-  });
+    },
+    {
+      name: "search"
+    }
+  );
 
   // const query = { $text: { $search: searchAPI } };
   var todaysDate = new Date(Date.now()).toISOString()
