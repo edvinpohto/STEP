@@ -66,15 +66,25 @@ export default function SearchModal() {
           <div className="">
             <div className="fixed h-full inset-0">
 
-            <div className="fixed bottom-20 right-9 mt-4 z-20 sm:right-4 sm:bottom-4">
-              <button
-                type="button"
-                className="inline-flex justify-center rounded-full border border-transparent bg-blue-100 px-4 py-1 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                onClick={closeModal}
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
               >
-                Close search
-              </button>
-            </div> 
+                <div className="fixed bottom-20 right-9 mt-4 z-20 sm:right-4 sm:bottom-4">
+                  <button
+                    type="button"
+                    className="inline-flex justify-center rounded-full border border-transparent bg-blue-100 px-4 py-1 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    onClick={closeModal}
+                  >
+                    Close search
+                  </button>
+                </div> 
+              </Transition.Child>
 
               <div className="grid fixed w-full h-full sm:place-content-center p-5 pt-16 pb-16 text-center">
                 <Transition.Child

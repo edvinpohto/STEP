@@ -25,7 +25,8 @@ export default function SearchBar( {closeModalForChild}: any ) {
 							type="search" 
 							id="eventSearch" 
 							className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-gray-800 focus:border-gray-800" 
-							placeholder="Search events..." 
+							placeholder="Search events..."
+							autoComplete="off"
 							required/>
 				</div>
 			{/* </form> */}
