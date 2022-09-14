@@ -1,6 +1,7 @@
 // a util function as guided by react-geocode to set up a geocoder from coordinates
 // gets coordinates from address
 
+// This works locally
 const api_key = process.env.NEXT_PUBLIC_KEY as string
 
 import Geocode from "react-geocode";
