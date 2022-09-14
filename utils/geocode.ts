@@ -1,10 +1,12 @@
 // a util function as guided by react-geocode to set up a geocoder from coordinates
 // gets coordinates from address
 
+const api_key = process.env.NEXT_PUBLIC_KEY as string
+
 import Geocode from "react-geocode";
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey("AIzaSyCf0Bw1lUTAeHStcB4ZN68vcn5jL8OaWuU");
+Geocode.setApiKey(api_key);
 
 // set response language. Defaults to english.
 Geocode.setLanguage("en");

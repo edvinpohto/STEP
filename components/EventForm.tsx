@@ -106,7 +106,7 @@ export default function EventForm() {
                       name="eventLocation"
                       id="eventLocation"
                       placeholder="Address"
-                      autocomplete="off"
+                      autoComplete="off"
                       {...address}
                     />
                     {address.suggestions?.length > 0 && (
